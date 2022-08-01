@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 
 const ArtistsIndexContainer = (props) => {
   const [artists, setArtists] = useState([]);
@@ -26,14 +27,22 @@ const ArtistsIndexContainer = (props) => {
   let artistList;
   if (isLoaded) {
     artistList = artists.map((artist) => {
-      return <li key={artist.id}>{artist.name}</li>;
+      return (
+        <li key={artist.id}>
+          {artist.name}
+          <p>Bio: {artist.bio}</p>
+          <p>Created on: {moment(artist.created_at).format("LL")}</p>
+        </li>
+      );
     });
-    return artistList;
   }
 
   return (
     <div>
-      <ul>{artistList}</ul>
+      <div>
+        <h1>All The Artists</h1>
+      </div>
+      {artistList}
     </div>
   );
 };
