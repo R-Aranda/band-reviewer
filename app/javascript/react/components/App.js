@@ -9,7 +9,6 @@ export const App = (props) => {
       <Switch>
         <Route to="/" component={ArtistsIndexContainer} />
         <Route to="/artists" />
-        {/* <Route to="/" /> */}
       </Switch>
     </Router>
   );
