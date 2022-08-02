@@ -5,4 +5,9 @@ class Api::V1::ArtistsController < ApiController
     render json: artists
   end
 
+  def show
+    artist = Artist.find(params[:id])
+    render json: artist
+  end
+
 end
