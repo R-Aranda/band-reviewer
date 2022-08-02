@@ -16,7 +16,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
   describe "GET#index" do
     it "should return a list of all artists" do
-      get :index
+      get :index, params: {id: first_artist.id}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
@@ -27,4 +27,16 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(returned_json[1]["bio"]).to  eq second_artist.bio
     end
   end 
+
+  describe "GET#index" do
+    it "should be an artist's show page with details about the artist name and bio" do
+      get :show, params: {id: first_artist.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+      expect(returned_json["name"]).to  eq first_artist.name
+      expect(returned_json["bio"]).to  eq first_artist.bio
+    end
+  end
 end
