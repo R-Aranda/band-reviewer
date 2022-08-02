@@ -22,6 +22,10 @@ const ArtistTopSection = ({ name, bio, website, genre}) => {
                 Read More on their website
               </a>
             </p>
+            <p>Genre: {genre}</p>
+            <div>
+               <p> Average Rating: /5 </p>
+            </div>
             </div>
           </div>
         </div>
