@@ -4,7 +4,6 @@ import ArtistTopSection from './ArtistTopSection'
  const ArtistShowPage = (props) => {
     const [artist, setArtist] = useState([]);
     
-
     let artistId = props.match.params.id
 
     const fetchArtist = async () => {
@@ -25,7 +24,6 @@ import ArtistTopSection from './ArtistTopSection'
         fetchArtist();
       }, []); 
 
-    
     return ( 
         <div>
             <ArtistTopSection
@@ -37,6 +35,6 @@ import ArtistTopSection from './ArtistTopSection'
             />
         </div> 
     );
- }
+  }
   
  export default ArtistShowPage;
