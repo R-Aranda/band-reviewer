@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-
+import ArtistTile from "./ArtistTile";
+import NewArtistForm from "./NewArtistForm";
 const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+
+  const artistSubmitHandler = artist => {
+    setArtists([...artists, artist])
+  }
+
 
   const fetchArtists = async () => {
     try {
@@ -23,28 +30,27 @@ const ArtistsContainer = (props) => {
   useEffect(() => {
     fetchArtists();
   }, []);
-
-  let artistList;
-  if (isLoaded) {
-    artistList = artists.map((artist) => {
+  
+    const artistArray = artists.map((artist) => {
       return (
-        <li key={artist.id}>
-          {artist.name}
-          <p>Bio: {artist.bio}</p>
-          <p>Created on: {moment(artist.created_at).format("LL")}</p>
-        </li>
+        <ArtistTile 
+        key={artist.id}
+        name={artist.name}
+        bio={artist.bio}
+        id={artist.id}
+        />
       );
     });
-  }
 
-  return (
-    <div>
-      <div>
-        <h1>All The Artists</h1>
+
+
+    return (
+    <div className="artist-index-container">
+      <div className="grid-x">
+        {artistArray}
       </div>
-      {artistList}
     </div>
-  );
+    )
 };
 
 export default ArtistsContainer;

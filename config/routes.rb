@@ -2,13 +2,12 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get '/artists', to: "homes#index"
-
   
   namespace :api do
     namespace :v1 do
-      resources :artists, only: [:index]
+      resources :artists, only: [:index, :create]
     end
   end
+  get "/artists/new", to: "homes#index" 
+  get "/artists", to: "homes#index"
 end
