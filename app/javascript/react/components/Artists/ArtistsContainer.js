@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-const ArtistsIndexContainer = (props) => {
+
+const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
 
   const getArtists = async () => {
@@ -41,4 +42,4 @@ const ArtistsIndexContainer = (props) => {
   );
 };
 
-export default ArtistsIndexContainer;
+export default ArtistsContainer;
