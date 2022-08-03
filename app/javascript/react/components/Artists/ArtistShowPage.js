@@ -27,11 +27,11 @@ import ArtistTopSection from './ArtistTopSection'
     return ( 
         <div>
             <ArtistTopSection
-            key={artist.id}
-            name={artist.name}
-            bio={artist.bio}
-            genre={artist.genre}
-            website={artist.website}
+              key={artist.id}
+              name={artist.name}
+              bio={artist.bio}
+              genre={artist.genre}
+              website={artist.website}
             />
         </div> 
     );

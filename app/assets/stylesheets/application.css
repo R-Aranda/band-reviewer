@@ -116,9 +116,12 @@
    color: #8a8a8a;
  }
 
- .container{
-    width : 300px;
+ .image-container{
+    width : 200px;
+    height: 300px;
     margin: 0px;
+    border: solid 3px #ffffff;
+    background-color: #8a8a8a;
  }
  
  .img{

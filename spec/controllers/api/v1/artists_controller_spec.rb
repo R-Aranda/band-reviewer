@@ -28,7 +28,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
     end
   end 
 
-  describe "GET#index" do
+  describe "GET#show" do
     it "should be an artist's show page with details about the artist name and bio" do
       get :show, params: {id: first_artist.id}
       returned_json = JSON.parse(response.body)
