@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
-
+import ArtistTile from "./ArtistTile";
 
 const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
@@ -23,21 +22,20 @@ const ArtistsContainer = (props) => {
     getArtists();
   }, [artists.length]);
 
-  let artistList;
-  artistList = artists.map((artist) => {
+  const artistArray = artists.map((artist) => {
     return (
-      <li key={artist.id}>
-        {artist.name}
-        <p>Bio: {artist.bio}</p>
-        <p>Created on: {moment(artist.created_at).format("LL")}</p>
-      </li>
+      <ArtistTile
+        key={artist.id}
+        name={artist.name}
+        bio={artist.bio}
+        id={artist.id}
+      />
     );
   });
 
   return (
-    <div>
-      <h1>All The Artists</h1>
-      {artistList}
+    <div className="artist-index-container">
+      <div className="grid-x">{artistArray}</div>
     </div>
   );
 };
