@@ -6,11 +6,9 @@ const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
-  const artistSubmitHandler = artist => {
-    setArtists([...artists, artist])
-  }
-
+  const artistSubmitHandler = (artist) => {
+    setArtists([...artists, artist]);
+  };
 
   const fetchArtists = async () => {
     try {
@@ -30,27 +28,23 @@ const ArtistsContainer = (props) => {
   useEffect(() => {
     fetchArtists();
   }, []);
-  
-    const artistArray = artists.map((artist) => {
-      return (
-        <ArtistTile 
+
+  const artistArray = artists.map((artist) => {
+    return (
+      <ArtistTile
         key={artist.id}
         name={artist.name}
         bio={artist.bio}
         id={artist.id}
-        />
-      );
-    });
+      />
+    );
+  });
 
-
-
-    return (
+  return (
     <div className="artist-index-container">
-      <div className="grid-x">
-        {artistArray}
-      </div>
+      <div className="grid-x">{artistArray}</div>
     </div>
-    )
+  );
 };
 
 export default ArtistsContainer;
