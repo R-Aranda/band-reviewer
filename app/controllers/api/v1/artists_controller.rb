@@ -13,6 +13,11 @@ class Api::V1::ArtistsController < ApiController
       render json: { errors: artist.errors.full_messages }, status: 400
     end
   end
+
+  def show
+    artist = Artist.find(params[:id])
+    render json: artist
+  end
   
   private
 

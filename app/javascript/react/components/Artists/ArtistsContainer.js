@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
 import ArtistTile from "./ArtistTile";
-import NewArtistForm from "./NewArtistForm";
+
 const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const artistSubmitHandler = (artist) => {
-    setArtists([...artists, artist]);
-  };
-
-  const fetchArtists = async () => {
+  const getArtists = async () => {
     try {
       const response = await fetch("/api/v1/artists");
       if (!response.ok) {
@@ -19,15 +13,14 @@ const ArtistsContainer = (props) => {
       }
       const artistData = await response.json();
       setArtists(artistData);
-      setIsLoaded(true);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    fetchArtists();
-  }, []);
+    getArtists();
+  }, [artists.length]);
 
   const artistArray = artists.map((artist) => {
     return (

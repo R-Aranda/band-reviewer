@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import "@fortawesome/fontawesome-free/css/all"
 
 import App from '../react/components/App'
 import RedBox from 'redbox-react'
