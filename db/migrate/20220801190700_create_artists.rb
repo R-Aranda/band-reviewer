@@ -5,6 +5,7 @@ class CreateArtists < ActiveRecord::Migration[5.2]
       t.text :bio, null: false
       t.string :genre 
       t.string :website
+      
       t.timestamps null: false
     end
   end

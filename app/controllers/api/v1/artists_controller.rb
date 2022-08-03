@@ -1,8 +1,7 @@
 class Api::V1::ArtistsController < ApiController
 
   def index 
-    artists = Artist.all
-    render json: artists
+    render json: Artist.all
   end
 
   def create
@@ -18,9 +17,9 @@ class Api::V1::ArtistsController < ApiController
     artist = Artist.find(params[:id])
     render json: artist
   end
-  
-  private
 
+  private
+  
   def artist_params
     params.require(:artist).permit(:name, :bio)
   end

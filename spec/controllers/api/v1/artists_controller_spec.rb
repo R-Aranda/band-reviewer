@@ -37,8 +37,8 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
   describe "POST#create" do
     it "creates a new artist" do
-
-      post_json = { name: third_artist.name, bio: third_artist.bio}
+      
+      post_json = { name: third_artist.name, bio: third_artist.bio }
       count = Artist.count
       post(:create, params: {artist: post_json})
       expect(Artist.count).to eq(count + 1)
@@ -46,10 +46,10 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
     it "returns json of new artist" do
 
-      post_json = { name: third_artist.name, bio: third_artist.bio}
+      post_json = { name: third_artist.name, bio: third_artist.bio }
       post(:create, params: {artist: post_json})
       returned_json = JSON.parse(response.body)
-
+      
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
       expect(returned_json).to be_kind_of(Hash)
