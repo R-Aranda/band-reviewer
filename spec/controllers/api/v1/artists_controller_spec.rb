@@ -36,11 +36,15 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
   end 
 
   describe "POST#create" do
+    user = User.first
+    sign_in user
+    
     it "creates a new artist" do
 
       post_json = { name: third_artist.name, bio: third_artist.bio}
       count = Artist.count
       post(:create, params: {artist: post_json})
+      # binding.pry
       expect(Artist.count).to eq(count + 1)
     end
 
