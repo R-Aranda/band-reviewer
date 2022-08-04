@@ -23,13 +23,19 @@ const NewArtistForm = () => {
     try {
       const response = await fetch("/api/v1/artists", {
         method: "POST",
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(newArtist),
       });
       const artistObject = await response.json();
-      setShouldRedirect(true);
+
+      // check if error message was returned. if we get error, redirect them to the login page
+        // if the error, you will have to redirect with window.location 
+        // window.location = "/users/sign_in"
+      // setShouldRedirect(true);
     } catch (err) {
       console.log(err);
     }
