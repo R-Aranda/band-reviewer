@@ -1,5 +1,3 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body
-
-  belongs_to :artist
+  attributes :id, :title, :body, :created_at
 end
