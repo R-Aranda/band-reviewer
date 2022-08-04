@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ArtistsContainer from "./ArtistsContainer";
 import ErrorList from "./ErrorList";
 import { Redirect } from "react-router-dom";
 
 const NewArtistForm = () => {
+  const [artistObject, setArtistObject] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
   const [newArtist, setNewArtist] = useState({
@@ -23,12 +23,14 @@ const NewArtistForm = () => {
     try {
       const response = await fetch("/api/v1/artists", {
         method: "POST",
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(newArtist),
       });
-      const artistObject = await response.json();
+      setArtistObject(await response.json());
       setShouldRedirect(true);
     } catch (err) {
       console.log(err);
@@ -36,7 +38,7 @@ const NewArtistForm = () => {
   };
 
   if (shouldRedirect) {
-    return <Redirect push to="/artists" />;
+    return <Redirect push to={`/artists/${artistObject.id}`} />;
   }
 
   const handleInputChange = (event) => {
