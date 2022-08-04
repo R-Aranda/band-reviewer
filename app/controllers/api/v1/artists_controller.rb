@@ -3,7 +3,6 @@ class Api::V1::ArtistsController < ApiController
 
   def index 
     artists = Artist.all
-    binding.pry
     render json: artists
   end
 
@@ -28,7 +27,6 @@ class Api::V1::ArtistsController < ApiController
   end
 
   def authenticate_user_fetch!
-    binding.pry
     if !user_signed_in?
       render json: { error: "you must be signed in to create a new band"}, status: 401
     end

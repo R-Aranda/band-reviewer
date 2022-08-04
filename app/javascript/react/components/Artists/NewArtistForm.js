@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ArtistsContainer from "./ArtistsContainer";
 import ErrorList from "./ErrorList";
 import { Redirect } from "react-router-dom";
 
 const NewArtistForm = () => {
+  const [artistObject, setArtistObject] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
   const [newArtist, setNewArtist] = useState({
@@ -30,19 +30,15 @@ const NewArtistForm = () => {
         },
         body: JSON.stringify(newArtist),
       });
-      const artistObject = await response.json();
-
-      // check if error message was returned. if we get error, redirect them to the login page
-        // if the error, you will have to redirect with window.location 
-        // window.location = "/users/sign_in"
-      // setShouldRedirect(true);
+      setArtistObject(await response.json());
+      setShouldRedirect(true);
     } catch (err) {
       console.log(err);
     }
   };
 
   if (shouldRedirect) {
-    return <Redirect push to="/artists" />;
+    return <Redirect push to={`/artists/${artistObject.id}`} />;
   }
 
   const handleInputChange = (event) => {

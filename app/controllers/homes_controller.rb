@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authorize_user_nick, only: [:auth]
+  before_action :authorize_user, only: [:auth]
 
   def index
   end
@@ -7,11 +7,10 @@ class HomesController < ApplicationController
   def auth
     render :index
   end
-  #any page that needs to have an authorized user send them to the "auth" page
+
   private 
 
-
-  def authorize_user_nick
+  def authorize_user
     if !user_signed_in?
       redirect_to "/users/sign_in"
     end
