@@ -1,7 +1,8 @@
 require "rails_helper"
 
-RSpec.describe Api::V1::ArtistsController, type: :controller do
 
+RSpec.describe Api::V1::ArtistsController, type: :controller do
+  
   let!(:first_artist) {
     Artist.create(
       name: "The Strokes",
@@ -36,8 +37,12 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
   end 
 
   describe "POST#create" do
-    it "creates a new artist" do
+    user = FactoryBot.create(:user)
+    before() do
+      sign_in user
+    end
 
+    it "should create a new artist" do
       post_json = { name: third_artist.name, bio: third_artist.bio}
       count = Artist.count
       post(:create, params: {artist: post_json})
@@ -57,7 +62,18 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(returned_json["name"]).to eq third_artist.name
       expect(returned_json["bio"]).to eq third_artist.bio
     end
-  end 
+  end
+  
+  describe "POST#create" do
+    it "should not create a new artist and should redirect to sign-in page" do
+      post_json = { name: third_artist.name, bio: third_artist.bio}
+      count = Artist.count
+      post(:create, params: {artist: post_json})
+      binding.pry
+      expect(Artist.count).to eq(count)
+      expect(response).to have_http_status(401)
+    end
+  end
 
   describe "GET#show" do
     it "should be an artist's show page with details about the artist name and bio" do
