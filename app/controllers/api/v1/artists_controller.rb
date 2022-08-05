@@ -3,8 +3,7 @@ class Api::V1::ArtistsController < ApiController
   before_action :authorize_user, only: [:delete]
 
   def index 
-    artists = Artist.all
-    render json: artists
+    render json: Artist.all
   end
 
   def create
@@ -29,6 +28,8 @@ class Api::V1::ArtistsController < ApiController
   
   private
 
+  private
+  
   def artist_params
     params.require(:artist).permit(:name, :bio)
   end
