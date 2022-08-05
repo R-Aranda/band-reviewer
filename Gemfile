@@ -47,7 +47,9 @@ gem 'rspec-rails', '3.8.2', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
 gem 'factory_bot', group: [:development, :test]
-gem 'database_cleaner', group: [:development, :test]
+# gem 'database_cleaner', group: [:development, :test]
+gem 'database_cleaner-active_record', group: [:development, :test]
+
 gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'

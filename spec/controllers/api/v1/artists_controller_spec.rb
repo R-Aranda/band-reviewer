@@ -1,7 +1,8 @@
 require "rails_helper"
 
-
 RSpec.describe Api::V1::ArtistsController, type: :controller do
+  # include Devise::Test::ControllerHelpers
+  include Devise::Test::IntegrationHelpers
   
   let!(:first_artist) {
     Artist.create(
@@ -22,6 +23,8 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
     ) }
 
   describe "GET#index" do
+    # include Devise::Test::ControllerHelpers
+
     it "should return a list of all artists" do
     
       get :index
@@ -36,40 +39,48 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
     end  
   end 
 
-  describe "POST#create" do
-    user = FactoryBot.create(:user)
-    before() do
-      sign_in user
-    end
+  # describe "POST#create" do
+    # include Devise::Test::ControllerHelpers
+    # include Devise::Test::IntegrationHelpers
 
-    it "should create a new artist" do
-      post_json = { name: third_artist.name, bio: third_artist.bio}
-      count = Artist.count
-      post(:create, params: {artist: post_json})
-      expect(Artist.count).to eq(count + 1)
-    end
+    # binding.pry
+    # user1 = FactoryBot.create(:user)
+    # user2 = FactoryBot.create(:user)
+    
+  #   before(:all) do
+  #     user = FactoryBot.create(:user)
+  #     sign_in user
+  #     # binding.pry
+  #   end
 
-    it "returns json of new artist" do
+  #   it "should create a new artist" do
+  #     post_json = { name: third_artist.name, bio: third_artist.bio}
+  #     count = Artist.count
+  #     post(:create, params: {artist: post_json})
+  #     expect(Artist.count).to eq(count + 1)
+  #   end
 
-      post_json = { name: third_artist.name, bio: third_artist.bio}
-      post(:create, params: {artist: post_json})
-      returned_json = JSON.parse(response.body)
+  #   it "returns json of new artist" do
 
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq("application/json")
-      expect(returned_json).to be_kind_of(Hash)
-      expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["name"]).to eq third_artist.name
-      expect(returned_json["bio"]).to eq third_artist.bio
-    end
-  end
+  #     post_json = { name: third_artist.name, bio: third_artist.bio}
+  #     post(:create, params: {artist: post_json})
+  #     returned_json = JSON.parse(response.body)
+
+  #     expect(response.status).to eq 200
+  #     expect(response.content_type).to eq("application/json")
+  #     expect(returned_json).to be_kind_of(Hash)
+  #     expect(returned_json).to_not be_kind_of(Array)
+  #     expect(returned_json["name"]).to eq third_artist.name
+  #     expect(returned_json["bio"]).to eq third_artist.bio
+  #   end
+  # end
   
   describe "POST#create" do
     it "should not create a new artist and should redirect to sign-in page" do
       post_json = { name: third_artist.name, bio: third_artist.bio}
       count = Artist.count
       post(:create, params: {artist: post_json})
-      binding.pry
+
       expect(Artist.count).to eq(count)
       expect(response).to have_http_status(401)
     end
