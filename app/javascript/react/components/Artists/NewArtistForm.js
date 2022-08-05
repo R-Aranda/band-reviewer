@@ -30,7 +30,8 @@ const NewArtistForm = () => {
         },
         body: JSON.stringify(newArtist),
       });
-      setArtistObject(await response.json());
+      const artistData = await response.json()
+      setArtistObject(artistData);
       setShouldRedirect(true);
     } catch (err) {
       console.log(err);
