@@ -1,22 +1,19 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ReviewTile from "./ReviewTile";
+import ReviewForm from "./ReviewForm";
 
-const ReviewContainer = ({ reviews }) => {
-  const reviewList = reviews.map((review) => {
-    return (
-      <ReviewTile
-        key={review.id}
-        body={review.body}
-        title={review.title}
-        created_at={review.created_at}
-      />
-    );
-  });
+
+const ReviewContainer = ({ reviews, addReview }) => {
 
   return (
     <div>
       <h2>Reviews:</h2>
-      <ul>{reviewList}</ul>
+      <ReviewTile 
+        reviews={reviews}
+      />
+      <ReviewForm 
+        addReview={addReview}
+      />
     </div>
   );
 };

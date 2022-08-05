@@ -15,6 +15,7 @@ class Api::V1::ArtistsController < ApiController
 
   def show
     artist = Artist.find(params[:id])
+    review = Review.new
     render json: artist
   end
 

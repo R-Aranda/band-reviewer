@@ -79,5 +79,29 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(returned_json["artist"]["bio"]).to  eq first_artist.bio
       expect(returned_json["artist"]["reviews"][0]["title"]).to eq first_artist.reviews[0]["title"]
     end
+
+    it "creates a new review for an artist" do
+
+      post_json = { title: first_review.title, body: first_review.body, artist: first_artist}
+      count = Review.count
+      post(:create, params: {review: post_json, artist: first_artist})
+      expect(Review.count).to eq(count + 1)
+    end
+
+    it "returns json of new review" do 
+
+      post_json = { title: first_review.title, body: first_review.body, artist: first_artist}
+      post(:create, params: {review: post_json, artist: first_artist})
+      returned_json = JSON.parse(response.body)
+      
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["review"]["title"]).to eq first_review.title
+      expect(returned_json["review"]["body"]).to eq first_review.body
+
+    end
+
   end
 end
