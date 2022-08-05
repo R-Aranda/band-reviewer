@@ -21,6 +21,14 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       bio: "Pretty Sick."
     ) }
 
+  let!(:first_review) {
+    Review.create(
+      title: "This band is cool",
+      body: "Hey this band is like really cool",
+      artist: Artist.first
+    )
+  }
+
   describe "GET#index" do
     it "should return a list of all artists" do
     
@@ -29,10 +37,10 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json[0]["name"]).to  eq first_artist.name
-      expect(returned_json[0]["bio"]).to  eq first_artist.bio
-      expect(returned_json[1]["name"]).to  eq second_artist.name
-      expect(returned_json[1]["bio"]).to  eq second_artist.bio
+      expect(returned_json["artists"][0]["name"]).to  eq first_artist.name
+      expect(returned_json["artists"][0]["bio"]).to  eq first_artist.bio
+      expect(returned_json["artists"][1]["name"]).to  eq second_artist.name
+      expect(returned_json["artists"][1]["bio"]).to  eq second_artist.bio
     end  
   end 
 
@@ -51,16 +59,16 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
     it "returns json of new artist" do
 
-      post_json = { name: third_artist.name, bio: third_artist.bio}
+      post_json = { name: third_artist.name, bio: third_artist.bio }
       post(:create, params: {artist: post_json})
       returned_json = JSON.parse(response.body)
-
+      
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["name"]).to eq third_artist.name
-      expect(returned_json["bio"]).to eq third_artist.bio
+      expect(returned_json["artist"]["name"]).to eq third_artist.name
+      expect(returned_json["artist"]["bio"]).to eq third_artist.bio
     end
   end
   
@@ -78,13 +86,14 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
   describe "GET#show" do
     it "should be an artist's show page with details about the artist name and bio" do
 
-      get :show, params: {id: first_artist.id}
+      get :show, params: {id: first_artist.id, reviews: first_artist.reviews}
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json")
-      expect(returned_json["name"]).to  eq first_artist.name
-      expect(returned_json["bio"]).to  eq first_artist.bio
+      expect(returned_json["artist"]["name"]).to  eq first_artist.name
+      expect(returned_json["artist"]["bio"]).to  eq first_artist.bio
+      expect(returned_json["artist"]["reviews"][0]["title"]).to eq first_artist.reviews[0]["title"]
     end
   end
 end

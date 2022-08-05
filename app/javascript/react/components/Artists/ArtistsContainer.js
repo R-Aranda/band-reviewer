@@ -12,7 +12,7 @@ const ArtistsContainer = (props) => {
         throw new Error(errorMessage);
       }
       const artistData = await response.json();
-      setArtists(artistData);
+      setArtists(artistData.artists);
     } catch (err) {
       console.log(err);
     }

@@ -12,3 +12,9 @@ Artist.create(name: "Kendrick Lamar", bio: "Compton's second coming of Christ", 
 Artist.create(name: "Pearl Jam", bio: "Eddie Vedder the GOAT! Nirvana who? This is the only Seattle band that matters", genre: "Grunge", website: "https://pearljam.com/")
 Artist.create(name: "Nirvana", bio: "Kurt Cobain the GOAT! Pearl Jam who? This is the only Seattle band that matters", genre: "Grunge", website: "https://www.nirvana.com/")
 Artist.create(name: "Hole", bio: "Good band BUT I HATE COURTNEY LOVE!!!", genre: "Rock", website:"https://en.wikipedia.org/wiki/Hole_(band)")
+
+Review.create(title: 'This band is cool', body: "I'm this band's number one fan!", artist: Artist.first)
+Review.create(title: 'I like their music', body: "These guys are like really good", artist: Artist.fourth)
+Review.create(title: 'Worst band ever', body: "This band is horrible and should be ashamed of themselves", artist: Artist.last)
+Review.create(title: 'I listen to this artist sometimes', body: "I'm this band's number one fan!", artist: Artist.first)
+Review.create(title: 'I like', body: "Very cool", artist: Artist.second)
