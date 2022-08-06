@@ -3,7 +3,8 @@ class Api::V1::ArtistsController < ApiController
   before_action :authorize_user, only: [:delete]
 
   def index 
-    render json: Artist.all
+    render json: { artists: Artist.all, user: current_user }
+    #get current_user that is accessing page
   end
 
   def create
@@ -25,8 +26,6 @@ class Api::V1::ArtistsController < ApiController
     artist.destroy
     render json: {}, status: :no_content
   end
-  
-  private
 
   private
   
