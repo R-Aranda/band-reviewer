@@ -77,9 +77,12 @@ $foundation-palette: (
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
-$white: #fefefe;
+$dark-gray: #9f9f9f;
+$black: #2a2d34;
+$white: #d7d0c8;
+$purple: #9d79bc;
+$red: #f03a47;
+$green: #31a287;
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
@@ -196,6 +199,7 @@ $keystroke-background: $light-gray;
 $keystroke-padding: rem-calc(2 4 0);
 $keystroke-radius: $global-radius;
 $abbr-underline: 1px dotted $black;
+$link-color: $white;
 
 // 5. Typography Helpers
 // ---------------------
@@ -871,11 +875,11 @@ $tooltip-radius: $global-radius;
 // 55. Top Bar
 // -----------
 
-$topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
+$topbar-padding: 0.3rem;
+$topbar-background: #9d79bc;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
-$topbar-input-width: 200px;
+$topbar-input-width: 100px;
 $topbar-unstack-breakpoint: medium;
 
 // 56. Xy Grid
@@ -893,3 +897,9 @@ $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
 
+//57. Link Colors
+// --------------
+
+$link-color: $white;
+$hover-color: $medium-gray;
+$visited-color: $white;

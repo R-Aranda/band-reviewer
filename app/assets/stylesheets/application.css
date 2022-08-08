@@ -19,14 +19,13 @@
 .card {
   width: 300px;
 }
-@charset "UTF-8";
 
 .news-image-gallery-container {
   background-color: #fefefe;
   padding: 2rem 1.5rem 1rem;
   height: 550px;
   width: 1000px;
-  background-color: #e3e3e3;
+  background-color: #666666;
 }
 
 .news-image-gallery-container .rounded-social-buttons {
@@ -157,3 +156,4 @@
   height: 200px;
   width: auto;
 }
+
