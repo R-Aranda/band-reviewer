@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import ArtistTile from "./ArtistTile";
+import React, { useState, useEffect } from "react"
+import ArtistTile from "./ArtistTile"
 
 const ArtistsContainer = (props) => {
-  const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState([])
   const [adminRole, setAdminRole] = useState(false)
 
   const getArtists = async () => {
     try {
-      const response = await fetch("/api/v1/artists");
+      const response = await fetch("/api/v1/artists")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
-        throw new Error(errorMessage);
+        throw new Error(errorMessage)
       }
-      const artistData = await response.json();
+      const artistData = await response.json()
       setArtists(artistData.artists)
       if (artistData.user) {
         if (artistData.user.role === "admin") {
@@ -20,32 +20,30 @@ const ArtistsContainer = (props) => {
         }
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   useEffect(() => {
-    getArtists();
-  }, [artists.length]);
+    getArtists()
+  }, [artists])
 
   const deleteArtist = async (id) => {
     try {
-    const response = await fetch(`api/v1/artists/${id}`, {
-      method: "DELETE",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify(),
+      const response = await fetch(`api/v1/artists/${id}`, {
+        method: "DELETE",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(),
       })
-      if (response.status === 204) {
-        getArtists()
-      }
-      } catch (error) {
-        console.log(error)
-      }
+      setArtists(artists.filter((artist) => artist.id == id))
+    } catch (error) {
+      console.log(error)
     }
+  }
 
   const artistArray = artists.map((artist) => {
     return (
@@ -57,14 +55,14 @@ const ArtistsContainer = (props) => {
         adminRole={adminRole}
         deleteArtist={deleteArtist}
       />
-    );
-  });
+    )
+  })
 
   return (
     <div className="artist-index-container">
       <div className="grid-x">{artistArray}</div>
     </div>
-  );
-};
+  )
+}
 
 export default ArtistsContainer;
