@@ -11,6 +11,7 @@ Artist.create(name: "Daft Punk", bio: "Two French men making crazy electronic mu
 Artist.create(name: "Kendrick Lamar", bio: "Compton's second coming of Christ", genre: "Hip-Hop", website: "https://oklama.com/")
 Artist.create(name: "Pearl Jam", bio: "Eddie Vedder the GOAT! Nirvana who? This is the only Seattle band that matters", genre: "Grunge", website: "https://pearljam.com/")
 Artist.create(name: "Nirvana", bio: "Kurt Cobain the GOAT! Pearl Jam who? This is the only Seattle band that matters", genre: "Grunge", website: "https://www.nirvana.com/")
+<<<<<<< HEAD
 Artist.create(name: "Hole", bio: "Good band BUT I HATE COURTNEY LOVE!!!", genre: "Rock", website:"https://en.wikipedia.org/wiki/Hole_(band)")
 
 Review.create(rating: "5", title: 'This band is cool', body: "I'm this band's number one fan!", artist: Artist.first)
