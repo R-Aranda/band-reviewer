@@ -26,7 +26,7 @@ const ArtistsContainer = (props) => {
 
   useEffect(() => {
     getArtists()
-  }, [artists.length])
+  }, [])
 
   const deleteArtist = async (id) => {
     try {
@@ -39,7 +39,7 @@ const ArtistsContainer = (props) => {
         },
         body: JSON.stringify(),
       })
-      setArtists(artists.filter((artist) => artist.id == id))
+      setArtists(artists.filter((artist) => artist.id !== id))
     } catch (error) {
       console.log(error)
     }
