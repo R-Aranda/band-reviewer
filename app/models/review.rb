@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  validates :rating, presence: true
+  validates :rating, numericality: { in: [1..5] }
   validates :title, presence: true
   validates :body, presence: true
   

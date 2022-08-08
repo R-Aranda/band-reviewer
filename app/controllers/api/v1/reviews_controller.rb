@@ -13,7 +13,7 @@ class Api::V1::ReviewsController < ApiController
   private
 
   def review_params 
-    params.require(:review).permit(:title, :body, :artist)
+    params.require(:review).permit(:rating, :title, :body)
   end
 
   def artist

@@ -9,12 +9,14 @@ const ReviewTile = ({ reviews }) => {
       return (
         <li key={review.id}>
           <h3>{review.title}</h3>
+          <h5>Rating: {review.rating}</h5>
           <p>{review.body}</p>
           <p>Posted at: {moment(review.created_at).format("LL")}</p>
         </li>
       );
     });
   }
+  
   return (
     <ul>{reviewList}</ul>
   );
