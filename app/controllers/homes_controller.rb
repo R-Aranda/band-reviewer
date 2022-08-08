@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authorize_user, only: [:auth]
+  before_action :authorize_user, only: [:auth, :authenticated]
 
   def index
   end
