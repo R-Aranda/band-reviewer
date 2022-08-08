@@ -26,7 +26,7 @@ const ArtistsContainer = (props) => {
 
   useEffect(() => {
     getArtists()
-  }, [artists])
+  }, [artists.length])
 
   const deleteArtist = async (id) => {
     try {
