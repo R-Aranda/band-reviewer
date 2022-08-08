@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::ArtistsController, type: :controller do
-  # include Devise::Test::ControllerHelpers
-  include Devise::Test::IntegrationHelpers
+  include Devise::Test::ControllerHelpers
+  # include Devise::Test::IntegrationHelpers
   
   let!(:first_artist) {
     Artist.create(
@@ -82,6 +82,8 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
   #     expect(returned_json["bio"]).to eq third_artist.bio
   #   end
   # end
+
+  #^^^Original Post#create test that was also not working with sign_in or login_as^^^
   
   describe "POST#create" do
     it "should not create a new artist and should redirect to sign-in page" do
@@ -105,6 +107,48 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(returned_json["artist"]["name"]).to  eq first_artist.name
       expect(returned_json["artist"]["bio"]).to  eq first_artist.bio
       expect(returned_json["artist"]["reviews"][0]["title"]).to eq first_artist.reviews[0]["title"]
+    end
+  end
+
+  describe "DELETE#destroy" do
+
+    # before(:all) do
+    # user = FactoryBot.create(:user)
+    # user.role = "admin"
+    # user.confirm!
+    # login_as(user)
+    # sign_in user
+    # binding.pry
+    # end
+    #^^^trying a bunch of login_as / sign_in stuff w/ FactoryBot^^^
+
+
+    # before(:each) do
+    # # user = User.create(email: "admintest@email.com", role: "admin")
+    # # sign_in user
+    # # binding.pry
+    # end
+    #^^^another attempt at sign_in but without FactoryBot
+
+
+    # it "should delete Artist Tile from Artist Container" do
+
+    #   first_artist.destroy
+
+    #   expect(Artist.exists?(first_artist.id)).to be(false)
+    # end
+    #^^^Working test for delete action but should not work if user is not admin^^^
+
+
+    it "should delete Artist" do
+
+      user = User.create(email: "admintest@email.com", role: "admin")
+      login_as(user)
+
+      delete :destroy, params: { id: first_artist.id }
+      # binding.pry
+      # ^^^shows that user exists and is an admin^^^
+      expect(Artist.count).to be((Artist.count) - 1)
     end
   end
 end

@@ -3,7 +3,7 @@ import ReviewContainer from "../Reviews/ReviewContainer";
 import ArtistTopSection from "./ArtistTopSection";
 
 const ArtistShowPage = (props) => {
-  const [artist, setArtist] = useState([]);
+  const [artist, setArtist] = useState({});
   const [reviews, setReviews] = useState([]);
 
   let artistId = props.match.params.id;

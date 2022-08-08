@@ -4,7 +4,6 @@ class Api::V1::ArtistsController < ApiController
 
   def index 
     render json: { artists: Artist.all, user: current_user }
-    #get current_user that is accessing page
   end
 
   def create
