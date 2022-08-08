@@ -1,25 +1,15 @@
-import React from "react";
-import moment from "moment";
+import React from "react"
 
-const ReviewTile = ({ reviews }) => {
-
-  let reviewList
-  if (reviews) {
-    reviewList = reviews.map((review) => {
-      return (
-        <li key={review.id}>
-          <h3>{review.title}</h3>
-          <h5>Rating: {review.rating}</h5>
-          <p>{review.body}</p>
-          <p>Posted at: {moment(review.created_at).format("LL")}</p>
-        </li>
-      );
-    });
-  }
+const ReviewTile = ({ title, rating, body, date }) => {
   
   return (
-    <ul>{reviewList}</ul>
-  );
-};
+    <ul>
+      <h3>{title}</h3>
+      <h5>Rating: {rating}</h5>
+      <p>{body}</p>
+      <p>Posted at: {date}</p>
+    </ul>
+  )
+}
 
 export default ReviewTile;

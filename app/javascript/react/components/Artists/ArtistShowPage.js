@@ -4,7 +4,7 @@ import ArtistTopSection from "./ArtistTopSection";
 
 const ArtistShowPage = (props) => {
   const [artist, setArtist] = useState([]);
-  const [reviews,setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
 
 
   let artistId = props.match.params.id;
