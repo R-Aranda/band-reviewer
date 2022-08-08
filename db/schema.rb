@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 2022_08_05_140053) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string "rating", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.bigint "artist_id"
+    t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_reviews_on_artist_id"

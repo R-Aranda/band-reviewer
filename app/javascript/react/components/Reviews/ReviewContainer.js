@@ -1,24 +1,32 @@
-import React from "react";
-import ReviewTile from "./ReviewTile";
+import React, {useState, useEffect} from "react"
+import ReviewTile from "./ReviewTile"
+import ReviewForm from "./ReviewForm"
+import moment from "moment"
 
-const ReviewContainer = ({ reviews }) => {
-  const reviewList = reviews.map((review) => {
+
+const ReviewContainer = ({ reviews, addReview }) => {
+
+  const listOfReviews = reviews.map((review) => {
     return (
-      <ReviewTile
+      <ReviewTile 
         key={review.id}
-        body={review.body}
         title={review.title}
-        created_at={review.created_at}
+        rating={review.rating}
+        body={review.body}
+        date={moment(review.created_at).format("LL")}
       />
-    );
-  });
+    )
+  })
 
   return (
     <div>
       <h2>Reviews:</h2>
-      <ul>{reviewList}</ul>
+      {listOfReviews}
+      <ReviewForm 
+        addReview={addReview}
+      />
     </div>
-  );
-};
+  )
+}
 
 export default ReviewContainer;
