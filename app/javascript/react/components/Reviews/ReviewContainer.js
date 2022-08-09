@@ -14,6 +14,8 @@ const ReviewContainer = ({ reviews, addReview }) => {
         rating={review.rating}
         body={review.body}
         date={moment(review.created_at).format("LL")}
+        artistId={review.artist_id}
+        reviewId={review.id}
       />
     )
   })
