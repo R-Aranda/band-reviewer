@@ -5,7 +5,6 @@ class Api::V1::VotesController < ApplicationController
 
     before_action :authenticate_user
     def create
-      binding.pry
       vote = Vote.create( review_params )
 
       former_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
