@@ -18,3 +18,8 @@ Review.create(rating: "1", title: 'I like their music', body: "These guys are li
 Review.create(rating: "1", title: 'Worst band ever', body: "This band is horrible and should be ashamed of themselves", artist: Artist.last)
 Review.create(rating: "2", title: 'I listen to this artist sometimes', body: "I'm this band's number one fan!", artist: Artist.first)
 Review.create(rating: "5", title: 'I like', body: "Very cool", artist: Artist.second)
+
+User.create(email: "user1@email.com", username: "testuser2")
+User.create(email: "user1@email.com", username: "another")
+User.create(email: "user1@email.com", username: "Aidan")
+User.create(email: "user1@email.com", username: "420")
