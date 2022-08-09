@@ -11,7 +11,6 @@ class Api::V1::ReviewsController < ApiController
     else
       render json: { errors: review.errors.full_messages }, status: 400
     end
-    binding.pry
   end
 
   private

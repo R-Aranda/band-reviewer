@@ -10,6 +10,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       expect(response.status).to eq 200
       expect(return_json["user"]["email"]).to eq user.email
+      expect(return_json["user"]["username"]).to eq user.username
     end
   end
 end

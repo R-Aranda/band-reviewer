@@ -12,7 +12,6 @@ const ReviewContainer = ({ reviews, addReview }) => {
         rating={review.rating}
         body={review.body}
         date={moment(review.created_at).format("LL")}
-        user_id={review.user_id}
       />
     )
   })
