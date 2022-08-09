@@ -3,7 +3,7 @@ import ReviewContainer from "../Reviews/ReviewContainer";
 import ArtistTopSection from "./ArtistTopSection";
 
 const ArtistShowPage = (props) => {
-  const [artist, setArtist] = useState([]);
+  const [artist, setArtist] = useState({});
   const [reviews, setReviews] = useState([]);
 
   let artistId = props.match.params.id;
@@ -27,6 +27,28 @@ const ArtistShowPage = (props) => {
     fetchArtist();
   }, []);
 
+  const addReview = async (formInput) => {
+    try {
+      const response = await fetch(`/api/v1/artists/${artistId}/reviews`, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formInput),
+      });
+      const reviewData = await response.json();
+      {
+        response.status === 401
+          ? alert(reviewData.error)
+          : setReviews(reviews.concat(reviewData.review));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <ArtistTopSection
@@ -36,7 +58,7 @@ const ArtistShowPage = (props) => {
         genre={artist.genre}
         website={artist.website}
       />
-      <ReviewContainer reviews={reviews} />
+      <ReviewContainer reviews={reviews} addReview={addReview} />
     </div>
   );
 };

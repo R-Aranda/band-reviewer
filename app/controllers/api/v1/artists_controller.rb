@@ -1,8 +1,9 @@
 class Api::V1::ArtistsController < ApiController
   before_action :authenticate_user_fetch!, except: [:index, :show]
+  before_action :authorize_user, only: [:delete]
 
   def index 
-    render json: Artist.all
+    render json: { artists: Artist.all, user: current_user }
   end
 
   def create
@@ -19,10 +20,22 @@ class Api::V1::ArtistsController < ApiController
     render json: artist
   end
 
+  def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+    render json: {}, status: :no_content
+  end
+
   private
   
   def artist_params
     params.require(:artist).permit(:name, :bio)
+  end
+
+  def authorize_user
+    if !user_signed_in? || !(current_user.role == "admin")
+      render json: {error: ["Only admins have access to this feature"]}
+    end
   end
 
   def authenticate_user_fetch!

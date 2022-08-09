@@ -1,14 +1,15 @@
-import React from "react";
-import moment from "moment";
+import React from "react"
 
-const ReviewTile = ({ title, body, created_at }) => {
+const ReviewTile = ({ title, rating, body, date }) => {
+  
   return (
-    <div>
+    <ul>
       <h3>{title}</h3>
+      <h5>Rating: {rating}</h5>
       <p>{body}</p>
-      <p>Posted at: {moment(created_at).format("LL")}</p>
-    </div>
-  );
-};
+      <p>Posted at: {date}</p>
+    </ul>
+  )
+}
 
 export default ReviewTile;
