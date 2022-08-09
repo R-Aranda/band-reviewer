@@ -6,7 +6,6 @@ const ArtistShowPage = (props) => {
   const [artist, setArtist] = useState({});
   const [reviews, setReviews] = useState([]);
 
-
   let artistId = props.match.params.id;
 
   const fetchArtist = async () => {
@@ -18,7 +17,7 @@ const ArtistShowPage = (props) => {
       }
       const artistData = await response.json();
       setArtist(artistData.artist);
-      setReviews(artistData.artist.reviews)
+      setReviews(artistData.artist.reviews);
     } catch (err) {
       console.log(err);
     }
@@ -34,18 +33,22 @@ const ArtistShowPage = (props) => {
         method: "POST",
         credentials: "same-origin",
         headers: {
-            Accept: "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formInput),
       });
-      const reviewData = await response.json()      
-      setReviews(reviews.concat(reviewData.review));
+      const reviewData = await response.json();
+      {
+        response.status === 401
+          ? alert(reviewData.error)
+          : setReviews(reviews.concat(reviewData.review));
+      }
     } catch (err) {
       console.log(err);
     }
   };
-  
+
   return (
     <div>
       <ArtistTopSection
@@ -55,10 +58,7 @@ const ArtistShowPage = (props) => {
         genre={artist.genre}
         website={artist.website}
       />
-      <ReviewContainer 
-        reviews={reviews}
-        addReview={addReview}
-      />
+      <ReviewContainer reviews={reviews} addReview={addReview} />
     </div>
   );
 };
