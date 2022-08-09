@@ -1,7 +1,9 @@
 class Api::V1::VotesController < ApplicationController
-    before_action :authenticate_user_fetch!, except: [:index, :show]
-    before_action :authorize_user, only: [:delete]
+    protect_from_forgery with: :null_session
+    skip_before_action :verify_authenticity_token
 
+
+    before_action :authenticate_user
     def create
       vote = Vote.new( review_params )
 
@@ -21,14 +23,8 @@ class Api::V1::VotesController < ApplicationController
     def review_params 
         params.require(:vote).permit(:upvotes, :downvotes, :review_id)
       end
-
-      def authorize_user
-        if !user_signed_in? || !(current_user.role == "admin")
-          render json: {error: ["Only admins have access to this feature"]}
-        end
-      end
     
-      def authenticate_user_fetch!
+      def authenticate_user
         if !user_signed_in?
           render json: { error: "you must be signed in to vote on a review"}, status: 401
         end

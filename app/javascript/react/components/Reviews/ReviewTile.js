@@ -17,26 +17,11 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId}) => {
     let payload = {
       upvotes: 0,
       downvotes: 0,
-      review_id: reviewId
+      review_id: reviewId,
+      user_id: 1
     }
 
-    if (oldVote.upvoted && currentVote === "Agree") {
-      allUpvotes = votes.upvotes + 1
-      setOldVote({...oldVote, upvoted: false})
-    } else if (oldVote.upvoted && currentVote === "Disagree") {
-      allUpvotes = votes.upvotes - 1
-      allDownvotes = votes.downvotes + 1
-      setOldVote({upvoted: false, downvoted: true})
-      payload.downvotes = 1
-    } else if (oldVote.downvoted && currentVote === "Agree") {
-      allUpvotes = votes.upvotes + 1
-      allDownvotes = votes.downvotes - 1
-      setOldVote({upvoted: true, downvoted: false})
-      payload.upvotes = 1
-    } else if (oldVote.downvoted  && currentVote === "Disagree") {
-      allDownvotes = votes.downvotes + 1
-      setOldVote({...oldVote, downvoted: false})
-    } else if (currentVote === "Agree") {
+     if (currentVote === "Agree") {
       allUpvotes = votes.upvotes + 1
       setOldVote({upvoted: true, downvoted: false})
       payload.upvotes = 1
