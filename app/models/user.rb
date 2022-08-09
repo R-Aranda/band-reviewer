@@ -4,8 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+<<<<<<< HEAD
   mount_uploader :profile_photo, ProfilePhotoUploader
 
+=======
+  
+  has_many :reviews
+>>>>>>> user_page
   def admin?
     role == "admin"
   end

@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
-import ReviewContainer from "../Reviews/ReviewContainer";
-import ArtistTopSection from "./ArtistTopSection";
+import React, { useState, useEffect } from "react"
+import ReviewContainer from "../Reviews/ReviewContainer"
+import ArtistTopSection from "./ArtistTopSection"
 
 const ArtistShowPage = (props) => {
-  const [artist, setArtist] = useState({});
-  const [reviews, setReviews] = useState([]);
+  const [artist, setArtist] = useState({})
+  const [reviews, setReviews] = useState([])
 
-  let artistId = props.match.params.id;
+  let artistId = props.match.params.id
 
   const fetchArtist = async () => {
     try {
-      const response = await fetch(`/api/v1/artists/${artistId}`);
+      const response = await fetch(`/api/v1/artists/${artistId}`)
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        throw new Error(errorMessage);
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
       }
-      const artistData = await response.json();
-      setArtist(artistData.artist);
-      setReviews(artistData.artist.reviews);
+      const artistData = await response.json()
+      setArtist(artistData.artist)
+      setReviews(artistData.artist.reviews)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchArtist();
-  }, []);
+    fetchArtist()
+  }, [])
 
   const addReview = async (formInput) => {
     try {
@@ -37,17 +37,17 @@ const ArtistShowPage = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formInput),
-      });
-      const reviewData = await response.json();
+      })
+      const reviewData = await response.json()
       {
         response.status === 401
           ? alert(reviewData.error)
-          : setReviews(reviews.concat(reviewData.review));
+          : setReviews(reviews.concat(reviewData.review))
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   return (
     <div>
@@ -60,7 +60,7 @@ const ArtistShowPage = (props) => {
       />
       <ReviewContainer reviews={reviews} addReview={addReview} />
     </div>
-  );
-};
+  )
+}
 
-export default ArtistShowPage;
+export default ArtistShowPage
