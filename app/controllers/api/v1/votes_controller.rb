@@ -5,7 +5,8 @@ class Api::V1::VotesController < ApplicationController
 
     before_action :authenticate_user
     def create
-      vote = Vote.new( review_params )
+      binding.pry
+      vote = Vote.create( review_params )
 
       former_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
 
@@ -21,7 +22,7 @@ class Api::V1::VotesController < ApplicationController
     private 
 
     def review_params 
-        params.require(:vote).permit(:upvotes, :downvotes, :review_id)
+        params.require(:vote).permit(:upvotes, :downvotes, :review_id, current_user)
       end
     
       def authenticate_user

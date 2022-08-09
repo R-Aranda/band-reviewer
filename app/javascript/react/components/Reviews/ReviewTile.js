@@ -1,62 +1,73 @@
-import React, {useState} from "react"
+import React, { useState } from "react";
 
-const ReviewTile = ({ title, rating, body, date, reviewId, artistId}) => { 
+const ReviewTile = ({
+  title,
+  rating,
+  body,
+  date,
+  reviewId,
+  artistId,
+  allVotes,
+}) => {
   const [votes, setVotes] = useState({
     upvotes: 0,
     downvotes: 0,
-  })
+  });
+  debugger;
   const [oldVote, setOldVote] = useState({
     upvoted: false,
-    downvoted: false
-  })
+    downvoted: false,
+  });
   const submitHandler = async (event) => {
-    const currentVote = event.currentTarget.innerText
+    const currentVote = event.currentTarget.innerText;
 
-    let allUpvotes 
-    let allDownvotes
+    let allUpvotes;
+    let allDownvotes;
     let payload = {
       upvotes: 0,
       downvotes: 0,
       review_id: reviewId,
-      user_id: 1
-    }
+      user_id: 1,
+    };
 
-     if (currentVote === "Agree") {
-      allUpvotes = votes.upvotes + 1
-      setOldVote({upvoted: true, downvoted: false})
-      payload.upvotes = 1
+    if (currentVote === "Agree") {
+      allUpvotes = votes.upvotes + 1;
+      setOldVote({ upvoted: true, downvoted: false });
+      payload.upvotes = 1;
     } else if (currentVote === "Disagree") {
-      allDownvotes = votes.downvotes + 1
-      setOldVote({upvoted: false, downvoted: true})
-      payload.downvotes = 1
+      allDownvotes = votes.downvotes + 1;
+      setOldVote({ upvoted: false, downvoted: true });
+      payload.downvotes = 1;
     }
 
-    setVotes({upvotes: allUpvotes, downvotes: allDownvotes})
-    await updateVotes(payload)
-  }
+    setVotes({ upvotes: allUpvotes, downvotes: allDownvotes });
+    await updateVotes(payload);
+  };
 
   const updateVotes = async (payload) => {
     try {
-      const response = await fetch(`/api/v1/artists/${artistId}/reviews/${reviewId}/votes`, {
-        credentials: "same-origin",
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      })
-      debugger
+      const response = await fetch(
+        `/api/v1/artists/${artistId}/reviews/${reviewId}/votes`,
+        {
+          credentials: "same-origin",
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
+        const errorMessage = `${response.status} (${response.statusText})`;
+        throw new Error(errorMessage);
       }
-      setVotes(payload)
+      setVotes(payload);
     } catch (error) {
-        console.error(`Error in Fetch: ${error.message}`)
+      console.error(`Error in Fetch: ${error.message}`);
     }
-  }
-  
+  };
+
   return (
     <ul>
       <h3>{title}</h3>
@@ -64,14 +75,16 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId}) => {
       <p>{body}</p>
       <p>Posted at: {date}</p>
       <button className="button" onClick={submitHandler}>
-          Agree  
+        Agree
       </button>
       <button className="button" onClick={submitHandler}>
-          Disagree
+        Disagree
       </button>
-      <p>{votes.upvotes} users agree and {votes.downvotes} users disagree</p>
+      <p>
+        {votes.upvotes} users agree and {votes.downvotes} users disagree
+      </p>
     </ul>
-  )
-}
+  );
+};
 
 export default ReviewTile;
