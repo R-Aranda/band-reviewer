@@ -1,6 +1,13 @@
-import React, { Fragment, useState } from "react"
+import React, { useState } from "react"
 import ErrorList from "../Artists/ErrorList"
-
+let stars = (stars = [
+  "",
+  "⭐️",
+  "⭐️⭐️",
+  "⭐️⭐️⭐️",
+  "⭐️⭐️⭐️⭐️",
+  "⭐️⭐️⭐️⭐️⭐️",
+])
 const ReviewForm = ({ addReview }) => {
   const [errors, setErrors] = useState({})
   const [addNewReview, setAddNewReview] = useState({
@@ -69,9 +76,10 @@ const ReviewForm = ({ addReview }) => {
           />
         </label>
 
-        <label>
-          Title:
+        <label className="new-review-form-label">
+          Title
           <input
+            className="new-review-form-text-box"
             type="text"
             id="title"
             onChange={handleInputChange}
@@ -79,9 +87,10 @@ const ReviewForm = ({ addReview }) => {
           />
         </label>
 
-        <label>
-          Body:
+        <label className="new-review-form-label">
+          Body
           <input
+            className="new-review-form-text-box"
             type="text"
             id="body"
             onChange={handleInputChange}
@@ -89,11 +98,11 @@ const ReviewForm = ({ addReview }) => {
           />
         </label>
 
-        <div className="button-group">
-          <button className="button" onClick={clearForm}>
+        <div className="review-button-div">
+          <button className="review-button" onClick={clearForm}>
             Clear
           </button>
-          <input className="button" type="submit" value="Submit" />
+          <input className="review-button" type="submit" value="Submit" />
         </div>
       </form>
     </Fragment>

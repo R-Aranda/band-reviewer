@@ -24,7 +24,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
   let!(:first_review) {
     Review.create(
-      rating: "4",
+      rating: "⭐️⭐️⭐️⭐️",
       title: "This band is cool",
       body: "Hey this band is like really cool",
       artist: Artist.first
