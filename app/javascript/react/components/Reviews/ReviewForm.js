@@ -1,6 +1,6 @@
 import React, {useState } from 'react'
 import ErrorList from '../Artists/ErrorList'
-
+let stars = stars = ["","⭐️","⭐️⭐️","⭐️⭐️⭐️","⭐️⭐️⭐️⭐️","⭐️⭐️⭐️⭐️⭐️"]
 const ReviewForm = ({ addReview }) => {
     const [errors, setErrors] = useState({})
     const [addNewReview, setAddNewReview] = useState({
@@ -54,6 +54,12 @@ const ReviewForm = ({ addReview }) => {
             }
       }
 
+      const starSelector = stars.map(star =>{
+        return(
+          <option key={star} value={star}>{star}</option>
+        )
+      })
+
   return ( 
         <div>
           <form className="new-review-form" onSubmit={onSubmitHandler}>
@@ -61,12 +67,11 @@ const ReviewForm = ({ addReview }) => {
             <ErrorList errors={errors} />
             <label className="new-review-form-label">
               Rating
-              <input className="new-review-form-text-box"
-                type="text"
+              <select className="new-review-form-text-box"
                 id="rating"
                 onChange={handleInputChange}
                 value={addNewReview.rating}
-              />
+              >{starSelector}</select>
             </label>
 
             <label className="new-review-form-label">
