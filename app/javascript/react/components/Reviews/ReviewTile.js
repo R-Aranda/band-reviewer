@@ -1,7 +1,6 @@
 import React from "react"
 
 const ReviewTile = ({ title, rating, body, date }) => {
-  
   return (
     <ul>
       <h3>{title}</h3>
@@ -12,4 +11,4 @@ const ReviewTile = ({ title, rating, body, date }) => {
   )
 }
 
-export default ReviewTile;
+export default ReviewTile

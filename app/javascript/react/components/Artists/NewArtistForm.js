@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import ErrorList from "./ErrorList";
-import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import ErrorList from "./ErrorList"
+import { Redirect } from "react-router-dom"
 
 const NewArtistForm = () => {
   const [artistObject, setArtistObject] = useState({})
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [errors, setErrors] = useState({})
   const [newArtist, setNewArtist] = useState({
     name: "",
     bio: "",
-  });
+  })
   const clearForm = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     setNewArtist({
       name: "",
       bio: "",
-    });
-    setErrors({});
-  };
+    })
+    setErrors({})
+  }
 
   const addArtist = async () => {
     try {
@@ -26,51 +26,51 @@ const NewArtistForm = () => {
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(newArtist),
-      });
+      })
       const artistData = await response.json()
-      setArtistObject(artistData);
-      setShouldRedirect(true);
+      setArtistObject(artistData)
+      setShouldRedirect(true)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   if (shouldRedirect) {
-    return <Redirect push to={`/artists/${artistObject.id}`} />;
+    return <Redirect push to={`/artists/${artistObject.id}`} />
   }
 
   const handleInputChange = (event) => {
     setNewArtist({
       ...newArtist,
       [event.currentTarget.id]: event.currentTarget.value,
-    });
-  };
+    })
+  }
 
   const validForSubmission = () => {
-    let submitErrors = {};
-    const requiredFields = ["name", "bio"];
+    let submitErrors = {}
+    const requiredFields = ["name", "bio"]
     requiredFields.forEach((field) => {
       if (newArtist[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
-        };
+        }
       }
-    });
+    })
 
-    setErrors(submitErrors);
-    return _.isEmpty(submitErrors);
-  };
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
+  }
 
   const onSubmitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (validForSubmission()) {
-      addArtist();
+      addArtist()
     }
-  };
+  }
 
   return (
     <form className="callout" onSubmit={onSubmitHandler}>
@@ -102,7 +102,7 @@ const NewArtistForm = () => {
         <input className="button" type="submit" value="Submit" />
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default NewArtistForm;
+export default NewArtistForm

@@ -1,14 +1,12 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import ReviewTile from "./ReviewTile"
 import ReviewForm from "./ReviewForm"
 import moment from "moment"
 
-
 const ReviewContainer = ({ reviews, addReview }) => {
-
   const listOfReviews = reviews.map((review) => {
     return (
-      <ReviewTile 
+      <ReviewTile
         key={review.id}
         title={review.title}
         rating={review.rating}
@@ -22,11 +20,9 @@ const ReviewContainer = ({ reviews, addReview }) => {
     <div>
       <h2>Reviews:</h2>
       {listOfReviews}
-      <ReviewForm 
-        addReview={addReview}
-      />
+      <ReviewForm addReview={addReview} />
     </div>
   )
 }
 
-export default ReviewContainer;
+export default ReviewContainer
