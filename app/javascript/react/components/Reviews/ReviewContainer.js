@@ -20,8 +20,10 @@ const ReviewContainer = ({ reviews, addReview }) => {
 
   return (
     <div>
-      <h2>Reviews:</h2>
-      {listOfReviews}
+      <h2 className="review-header">Reviews</h2>
+          <div className="review-text-div">
+            {listOfReviews}
+          </div>
       <ReviewForm 
         addReview={addReview}
       />

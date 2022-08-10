@@ -56,12 +56,12 @@ const ReviewForm = ({ addReview }) => {
 
   return ( 
         <div>
-          <h2>Submit A Review:</h2>
-          <ErrorList errors={errors} />
-          <form className="callout" onSubmit={onSubmitHandler}>
-            <label>
-              Rating:
-              <input
+          <form className="new-review-form" onSubmit={onSubmitHandler}>
+            <h2 className="submit-review-header">Submit A Review</h2>
+            <ErrorList errors={errors} />
+            <label className="new-review-form-label">
+              Rating
+              <input className="new-review-form-text-box"
                 type="text"
                 id="rating"
                 onChange={handleInputChange}
@@ -69,9 +69,9 @@ const ReviewForm = ({ addReview }) => {
               />
             </label>
 
-            <label>
-              Title:
-              <input
+            <label className="new-review-form-label">
+              Title
+              <input className="new-review-form-text-box"
                 type="text"
                 id="title"
                 onChange={handleInputChange}
@@ -79,9 +79,9 @@ const ReviewForm = ({ addReview }) => {
               />
             </label>
       
-            <label>
-              Body:
-              <input
+            <label className="new-review-form-label">
+              Body
+              <input className="new-review-form-text-box"
                 type="text"
                 id="body"
                 onChange={handleInputChange}
@@ -89,11 +89,11 @@ const ReviewForm = ({ addReview }) => {
               />
             </label>
       
-            <div className="button-group">
-              <button className="button" onClick={clearForm}>
+            <div className="review-button-div">
+              <button className="review-button" onClick={clearForm}>
                 Clear
               </button>
-              <input className="button" type="submit" value="Submit" />
+              <input className="review-button" type="submit" value="Submit" />
             </div>
           </form>
         </div>

@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BandReviewer</title>
+  <title>ToneDeaf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1 class="website-name"><a href="/">BandReviewer</a></h1>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <%= link_to 'Sign In', new_user_session_path %>
-        <%- end -%>
-      </ul>
-    </section>
+  <nav class="nav-bar-main">
+    <div class="inner-nav-bar">
+      <h1><a href="/">ToneDeaf</a></h1>
+      <section class="top-bar-section">
+          <%- if current_user -%>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          <%- else -%>
+            <%= link_to 'Sign In', new_user_session_path %>
+          <%- end -%>
+      </section>
+    </div>
   </nav>
-
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
