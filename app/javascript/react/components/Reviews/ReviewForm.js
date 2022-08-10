@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 import ErrorList from "../Artists/ErrorList"
 
 const ReviewForm = ({ addReview }) => {
@@ -55,7 +55,7 @@ const ReviewForm = ({ addReview }) => {
   }
 
   return (
-    <div>
+    <Fragment>
       <h2>Submit A Review:</h2>
       <ErrorList errors={errors} />
       <form className="callout" onSubmit={onSubmitHandler}>
@@ -96,7 +96,7 @@ const ReviewForm = ({ addReview }) => {
           <input className="button" type="submit" value="Submit" />
         </div>
       </form>
-    </div>
+    </Fragment>
   )
 }
 

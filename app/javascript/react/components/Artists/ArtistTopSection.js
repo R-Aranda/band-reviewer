@@ -23,7 +23,7 @@ const ArtistTopSection = ({ bio, website, genre, data }) => {
               <p>
                 From: {data?.city}, {data?.country}
               </p>
-              <p>First Active: {data?.["year-started"]}</p>
+              <p>First Active: {data?.year_started}</p>
               <p>
                 <a href={`${website}`} className="read-more">
                   Read More on their website

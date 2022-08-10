@@ -117,7 +117,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(response.status).to eq(200)
       expect(returned_json["artist"]["artist_data"]["name"]).to eq first_artist.name
       expect(returned_json["artist"]["artist_data"]["city"]).to eq "New York"
-      expect(returned_json["artist"]["artist_data"]["year-started"]).to eq "1998"
+      expect(returned_json["artist"]["artist_data"]["year_started"]).to eq "1998"
     end
   end
 
