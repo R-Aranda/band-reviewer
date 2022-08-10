@@ -16,7 +16,7 @@ const ArtistTile = (props) => {
             <Link to={`/artists/${props.id}`}>{props.name}</Link>
             {props.adminRole && (
               <div className="button" onClick={handleClick}>
-                delete button
+                Delete button
               </div>
             )}
           </div>
