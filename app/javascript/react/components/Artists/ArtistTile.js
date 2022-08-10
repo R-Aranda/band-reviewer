@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
 const ArtistTile = (props) => {
-
   const handleClick = (event) => {
     event.preventDefault()
     props.deleteArtist(props.id)
@@ -23,7 +22,7 @@ const ArtistTile = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ArtistTile;
+export default ArtistTile

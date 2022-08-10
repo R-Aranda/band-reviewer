@@ -9,7 +9,7 @@ const ArtistsContainer = (props) => {
     try {
       const response = await fetch("/api/v1/artists")
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
+        const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
       const artistData = await response.json()
@@ -35,7 +35,7 @@ const ArtistsContainer = (props) => {
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(),
       })
@@ -65,4 +65,4 @@ const ArtistsContainer = (props) => {
   )
 }
 
-export default ArtistsContainer;
+export default ArtistsContainer
