@@ -5,7 +5,6 @@ import moment from "moment";
 
 const ReviewContainer = ({ reviews, addReview }) => {
   const listOfReviews = reviews.map((review) => {
-    debugger;
     return (
       <ReviewTile
         key={review.id}
@@ -15,7 +14,9 @@ const ReviewContainer = ({ reviews, addReview }) => {
         date={moment(review.created_at).format("LL")}
         artistId={review.artist_id}
         reviewId={review.id}
+        userId={review.user_id}
         allVotes={review.votes}
+
       />
     );
   });

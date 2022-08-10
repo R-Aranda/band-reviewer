@@ -7,43 +7,41 @@ const ReviewTile = ({
   date,
   reviewId,
   artistId,
-  allVotes,
+  userId
 }) => {
   const [votes, setVotes] = useState({
     upvotes: 0,
     downvotes: 0,
   });
-  debugger;
   const [oldVote, setOldVote] = useState({
     upvoted: false,
     downvoted: false,
   });
   const submitHandler = async (event) => {
-    const currentVote = event.currentTarget.innerText;
+    const currentVote = event.currentTarget.innerText
 
-    let allUpvotes;
-    let allDownvotes;
+    // votes state should only be updated after the fetch 
     let payload = {
       upvotes: 0,
       downvotes: 0,
       review_id: reviewId,
-      user_id: 1,
-    };
+      user_id: userId,
+    }
+    let allUpvotes
+    let allDownvotes
 
     if (currentVote === "Agree") {
-      allUpvotes = votes.upvotes + 1;
-      setOldVote({ upvoted: true, downvoted: false });
+      allUpvotes = votes.upvotes + 1
+      setOldVote({ upvoted: true, downvoted: false })
       payload.upvotes = 1;
     } else if (currentVote === "Disagree") {
-      allDownvotes = votes.downvotes + 1;
-      setOldVote({ upvoted: false, downvoted: true });
-      payload.downvotes = 1;
+      allDownvotes = votes.downvotes + 1
+      setOldVote({ upvoted: false, downvoted: true })
+      payload.downvotes = 1
     }
-
-    setVotes({ upvotes: allUpvotes, downvotes: allDownvotes });
-    await updateVotes(payload);
-  };
-
+    setVotes({ upvotes: allUpvotes, downvotes: allDownvotes })
+    await updateVotes(payload)
+  }
   const updateVotes = async (payload) => {
     try {
       const response = await fetch(
@@ -66,7 +64,7 @@ const ReviewTile = ({
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`);
     }
-  };
+  }
 
   return (
     <ul>
@@ -84,7 +82,7 @@ const ReviewTile = ({
         {votes.upvotes} users agree and {votes.downvotes} users disagree
       </p>
     </ul>
-  );
-};
+  )
+}
 
 export default ReviewTile;
