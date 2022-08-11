@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 
 const UserPage = (props) => {
   const [user, setUser] = useState([])
-  const [profilePhoto, setProfilePhoto] = useState([])
 
   let userId = props.match.params.id
 
@@ -15,7 +14,6 @@ const UserPage = (props) => {
       }
       const userData = await response.json()
       setUser(userData.user)
-      setProfilePhoto(userData.user.profile_photo.url)
     } catch (err) {
       console.log(err)
     }
@@ -26,8 +24,8 @@ const UserPage = (props) => {
   }, [])
 
   return (
-    <div>
-      <img src={profilePhoto} alt="Profile Photo" />
+    <div className="text-center">
+      <img src={user.profile_photo?.url} alt="Profile Photo" />
       <h1>{user.username}</h1>
       <div>{user.email}</div>
     </div>

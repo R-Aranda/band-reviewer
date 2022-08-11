@@ -5,7 +5,7 @@ class Api::V1::ReviewsController < ApiController
   def create
     review = Review.new(review_params)
     review.artist_id = artist.id
-    review.user_id = user.id
+    review.user_id = current_user
     if review.save
       render json: review
     else

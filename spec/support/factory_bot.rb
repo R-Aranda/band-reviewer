@@ -6,5 +6,6 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     username { 'factoryboi' }
+    profile_photo { fixture_file_upload( Rails.root + 'spec/fixtures/images/test-image.png', "image/png") }
   end
 end
