@@ -159,3 +159,16 @@
 .error-explanation-text {
     color: var(--red);
 }
+
+.top-section-text {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--black);
+    font-size: larger;
+}
+
+.top-section-text a{
+
+    color: var(--black);
+}

@@ -9,12 +9,14 @@ const NewArtistForm = () => {
   const [newArtist, setNewArtist] = useState({
     name: "",
     bio: "",
+    photo: ""
   });
   const clearForm = (event) => {
     event.preventDefault();
     setNewArtist({
       name: "",
       bio: "",
+      photo: ""
     });
     setErrors({});
   };
@@ -95,6 +97,15 @@ const NewArtistForm = () => {
         />
       </label>
 
+      <label>
+        Photo:
+        <input
+          type="text"
+          id="bio"
+          onChange={handleInputChange}
+          value={newArtist.photo}
+        />
+      </label>
       <div className="button-group">
         <button className="button" onClick={clearForm}>
           Clear

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_140053) do
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.text "bio", null: false
+    t.string "photo", null: false
     t.string "genre"
     t.string "website"
     t.datetime "created_at", null: false

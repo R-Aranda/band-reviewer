@@ -29,7 +29,7 @@ class Api::V1::ArtistsController < ApiController
   private
   
   def artist_params
-    params.require(:artist).permit(:name, :bio)
+    params.require(:artist).permit(:name, :bio, :photo)
   end
 
   def authorize_user

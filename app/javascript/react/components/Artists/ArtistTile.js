@@ -9,9 +9,9 @@ const ArtistTile = (props) => {
   }
 
   return (
-    <div className="grid-x">
-      <div className="small-3">
+    <div className="grid-x small-3">
         <div className="artist-tiles">
+          <img className="artist-photo" src={`${props.photo}`} />
           <div className="artist-tile-text">
             <Link to={`/artists/${props.id}`}>{props.name}</Link>
             {props.adminRole && (
@@ -21,7 +21,6 @@ const ArtistTile = (props) => {
             )}
           </div>
         </div>
-      </div>
     </div>
   );
 };
