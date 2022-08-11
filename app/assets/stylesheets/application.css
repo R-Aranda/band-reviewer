@@ -19,23 +19,24 @@
   --purple: #9d79BC;
   --red: #F03A47;
   --green: #32A287;
-  --white: #D7D0c8;
-  --black: #2a2d34;
+  --white: #ECF0F3;
+  --lightblue: #5DA399;
+  --darkblue: #353D46;
+  --background: #DAD2D8;
 }
+
 
 .card {
   width: 300px;
 }
 
 .news-image-gallery-container {
-  background-color: #fefefe;
   padding: 2rem 1.5rem 1rem;
   height: 650px;
   width: 80%;
-  background-color: rgba(175, 175, 175, 0.705);
+  background-color: var(--darkblue);
   margin: auto;
   margin-top: 10px;
-
 }
 
 .news-image-gallery-container .rounded-social-buttons {
@@ -52,7 +53,7 @@
   padding: 0;
   text-decoration: none;
   text-align: center;
-  color: #fefefe;
+  color: var(--white);
   font-size: 1.25rem;
   font-weight: normal;
   line-height: 1.8em;
