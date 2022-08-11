@@ -11,7 +11,7 @@ class HomesController < ApplicationController
   private 
 
   def authorize_user
-    if !user_signed_in? 
+    if !user_signed_in?
       redirect_to "/users/sign_in"
     end
   end
