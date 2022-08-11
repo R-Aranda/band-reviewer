@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react";
 
 const ReviewTile = ({
   title,
@@ -8,40 +8,47 @@ const ReviewTile = ({
   reviewId,
   artistId,
   userId,
+  allVotes,
 }) => {
-  const [votes, setVotes] = useState({
-    upvotes: 0,
-    downvotes: 0,
-  })
-  const [oldVote, setOldVote] = useState({
-    upvoted: false,
-    downvoted: false,
-  })
-  const submitHandler = async (event) => {
-    const currentVote = event.currentTarget.innerText
+  const [upvote, setUpvote] = useState();
+  const [downvote, setDownvote] = useState();
+  const [count, setCount] = useState();
 
-    // votes state should only be updated after the fetch
-    let payload = {
-      upvotes: 0,
-      downvotes: 0,
+  const getVotes = async () => {
+    try {
+      const response = await fetch(
+        `/api/v1/artists/${artistId}/reviews/${reviewId}/votes`
+      );
+      const voteData = await response.json();
+      setUpvote(voteData.upvotes);
+      setDownvote(voteData.downvotes);
+      setCount(voteData.total);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getVotes();
+  }, []);
+
+  const increment = (event) => {
+    updateVotes({
       review_id: reviewId,
-      user_id: userId,
-    }
-    let allUpvotes
-    let allDownvotes
+      upvote: 1,
+      downvote: 0,
+    });
+    setUpvote(upvote + 1);
+  };
 
-    if (currentVote === "Agree") {
-      allUpvotes = votes.upvotes + 1
-      setOldVote({ upvoted: true, downvoted: false })
-      payload.upvotes = 1
-    } else if (currentVote === "Disagree") {
-      allDownvotes = votes.downvotes + 1
-      setOldVote({ upvoted: false, downvoted: true })
-      payload.downvotes = 1
-    }
-    setVotes({ upvotes: allUpvotes, downvotes: allDownvotes })
-    await updateVotes(payload)
-  }
+  const decrement = () => {
+    updateVotes({
+      review_id: reviewId,
+      downvote: 1,
+      upvote: 0,
+    });
+    setDownvote(downvote + 1);
+  };
   const updateVotes = async (payload) => {
     try {
       const response = await fetch(
@@ -55,16 +62,13 @@ const ReviewTile = ({
           },
           body: JSON.stringify(payload),
         }
-      )
-      if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`
-        throw new Error(errorMessage)
-      }
-      setVotes(payload)
+      );
+      const newVoteData = await response.json();
+      setCount(newVoteData.total_votes.total);
     } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`)
+      console.error(`Error in Fetch: ${error.message}`);
     }
-  }
+  };
 
   return (
     <div className="review-text">
@@ -73,18 +77,16 @@ const ReviewTile = ({
         <h5>Rating: {rating} </h5>
         <p>{body}</p>
         <p>Posted at: {date}</p>
-        <button className="button" onClick={submitHandler}>
-          Agree
-        </button>
-        <button className="button" onClick={submitHandler}>
-          Disagree
-        </button>
-        <p>
-          {votes.upvotes} users agree and {votes.downvotes} users disagree
-        </p>
+        <i onClick={increment} className="upvote">
+          ▲
+        </i>
+        <i onClick={decrement} className="downvote">
+          ▼
+        </i>
+        <p>{count}</p>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default ReviewTile
+export default ReviewTile;

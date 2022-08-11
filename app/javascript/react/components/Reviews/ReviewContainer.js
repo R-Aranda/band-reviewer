@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import ReviewTile from "./ReviewTile"
-import ReviewForm from "./ReviewForm"
-import moment from "moment"
+import React, { useState, useEffect } from "react";
+import ReviewTile from "./ReviewTile";
+import ReviewForm from "./ReviewForm";
+import moment from "moment";
 
 const ReviewContainer = ({ reviews, addReview }) => {
   const listOfReviews = reviews.map((review) => {
@@ -17,8 +17,8 @@ const ReviewContainer = ({ reviews, addReview }) => {
         userId={review.user_id}
         allVotes={review.votes}
       />
-    )
-  })
+    );
+  });
 
   return (
     <div>
@@ -26,7 +26,7 @@ const ReviewContainer = ({ reviews, addReview }) => {
       <div className="review-text-div">{listOfReviews}</div>
       <ReviewForm addReview={addReview} />
     </div>
-  )
-}
+  );
+};
 
-export default ReviewContainer
+export default ReviewContainer;

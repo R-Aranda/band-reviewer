@@ -3,25 +3,46 @@ class Api::V1::VotesController < ApplicationController
     skip_before_action :verify_authenticity_token
     before_action :authenticate_user
 
+    def total_votes
+      votes = Vote.where(review_id: params["review_id"])
+      upvotes = votes.sum(:upvote)
+      downvotes = votes.sum(:downvote)
+      total = upvotes + downvotes * -1
+      {total: total, upvotes: upvotes, downvotes: downvotes}
+    end
+
     def create
-    
-      former_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
-      if former_vote
-        former_vote.upvotes = params["upvotes"]
-        former_vote.downvotes = params["downvotes"]
-        former_vote.save
+      user_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
+      if user_vote
+        if user_vote.upvote === 1 && params["upvote"].to_i === 1
+          user_vote.update(upvote: 0, downvote: 0)
+        elsif user_vote.downvote === 1 && params["downvote"].to_i === 1
+          user_vote.update(downvote: 0, upvote: 0)
+        elsif user_vote.upvote === 1 && params["downvote"].to_i === 1
+          user_vote.update(upvote: 0, downvote: 1)
+        elsif user_vote.downvote === 1 && params["upvote"].to_i === 1
+          user_vote.update(upvote: 1, downvote: 0)
+        elsif user_vote.upvote === 0 && params["downvote"].to_i === 1
+          user_vote.update(downvote: 1, upvote: 0)
+        elsif user_vote.upvote === 0 && params["upvote"].to_i === 1
+          user_vote.update(upvote: 1, downvote: 0)
+        end
+        
+        render json: {user_vote: user_vote, total_votes: total_votes}
       else
-        vote = Vote.new(review_params)
-        vote.user = current_user
-        vote.save
+        vote = Vote.create(review_id: params["review_id"], upvote: params["upvote"], downvote: params["downvote"], user_id: current_user.id)
+        render json: {vote: vote, total_votes: total_votes}
       end
-      render json: vote
+    end
+
+    def index
+      render json: total_votes
     end
 
     private 
 
     def review_params 
-        params.require(:vote).permit(:upvotes, :downvotes, :review_id)
+        params.require(:vote).permit(:upvote, :downvote, :review_id)
       end
     
       def authenticate_user

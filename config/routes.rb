@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :artists, only: [:index, :show, :create, :destroy] do
         resources :reviews, only: [:create] do
-           resources :votes, only: [:create]
+           resources :votes, only: [:create, :index, :show]
         end
       end
     end

@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_05_140053) do
+ActiveRecord::Schema.define(version: 2022_08_09_141530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "artist_data", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
@@ -34,9 +29,11 @@ ActiveRecord::Schema.define(version: 2022_08_05_140053) do
     t.string "title", null: false
     t.text "body", null: false
     t.bigint "artist_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_reviews_on_artist_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_08_05_140053) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "upvotes", default: 0, null: false
-    t.integer "downvotes", default: 0, null: false
+    t.integer "upvote", default: 0, null: false
+    t.integer "downvote", default: 0, null: false
     t.bigint "review_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

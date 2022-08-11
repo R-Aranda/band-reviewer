@@ -1,10 +1,10 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :rating, :title, :body, :created_at, :artist_id, :votes, :current_user_vote_status, :vote_stats
+  attributes :id, :rating, :title, :body, :created_at, :artist_id, :user_id, :votes, :current_user_vote_status, :vote_stats
 
   has_many :votes
 
   def vote_stats
-    reviews = Review.where(artist_id: self.object.id)
+    # reviews = Review.where(artist_id: self.object.id)
     
 
     # reviews.map do |review|
