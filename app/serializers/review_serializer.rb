@@ -5,7 +5,7 @@ class ReviewSerializer < ActiveModel::Serializer
 
   def vote_stats
     reviews = Review.where(artist_id: self.object.id)
-    binding.pry
+    
 
     # reviews.map do |review|
     #   totalUpvotes = 0
