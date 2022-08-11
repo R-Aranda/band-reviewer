@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ReviewTile = ({
-  title,
-  rating,
-  body,
-  date,
-  reviewId,
-  artistId,
-  userId,
-  allVotes,
-}) => {
+const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
   const [upvote, setUpvote] = useState();
   const [downvote, setDownvote] = useState();
   const [count, setCount] = useState();
