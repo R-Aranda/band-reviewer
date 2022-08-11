@@ -66,7 +66,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
     it "returns json of new artist" do
 
-      post_json = { name: third_artist.name, bio: third_artist.bio}
+      post_json = { name: third_artist.name, bio: third_artist.bio }
       post(:create, params: {artist: post_json})
       returned_json = JSON.parse(response.body)
 

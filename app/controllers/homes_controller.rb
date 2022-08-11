@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authorize_user, only: [:auth, :authenticated]
+  before_action :authorize_user, only: [:auth]
 
   def index
   end
@@ -11,7 +11,7 @@ class HomesController < ApplicationController
   private 
 
   def authorize_user
-    if !user_signed_in? || !current_user.admin?
+    if !user_signed_in? 
       redirect_to "/users/sign_in"
     end
   end

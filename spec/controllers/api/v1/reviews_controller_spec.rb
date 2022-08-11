@@ -4,6 +4,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     before(:each) do
         user = FactoryBot.create(:user)
         sign_in user
+        user2 = FactoryBot.create(:user)
+        sign_in user2
       end
 #HAD TO CREATE A USER IN ORDER TO ATTACH THE USER TO THE INITIAL REVIEW MADE IN THE let! BELOW
     let!(:first_artist) {
@@ -26,24 +28,28 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
     describe "POST#create" do
 #THIS NO LONGER WORKS BECAUSE A USER IS REQUIRED TO BE SIGNED IN FIRST TO MAKE A POST
-        before(:each) do
-            user2 = FactoryBot.create(:user)
-            sign_in user2
-            # binding.pry
-          end
+        # before(:each) do
+        #     user2 = FactoryBot.create(:user)
+        #     sign_in user2
+        #     # binding.pry
+        #   end
 #HOW DO WE MAKE THIS POST WITHOUT A USER SO THAT THE USER CAN BE APPLIED IN THE ACTUAL POST ACTION SO THAT THE REVIEW COUNT INCREASES?
         it "creates a new review for an artist" do
-            # binding.pry
-            post_json = { rating: first_review.rating, title: first_review.title, body: first_review.body, artist: first_review.artist, user: current_user }
+
+            user2 = FactoryBot.create(:user)
+            sign_in user2
+            
+            post_json = { rating: first_review.rating, title: first_review.title, body: first_review.body }
+
             count = Review.count
             post(:create, params: { review: post_json, artist_id: first_artist.id }, format: :json)
-            # binding.pry
+            returned_json = JSON.parse(response.body)
             expect(Review.count).to eq(count + 1)
         end
     
         it "returns json of new review" do 
             post_json = { rating: first_review.rating, title: first_review.title, body: first_review.body }
-            post :create, params: { review: post_json, artist_id: first_artist.id }, format: :json
+            post :create, params: { review: post_json, artist_id: first_artist.id, user_id: user2.id }, format: :json
             returned_json = JSON.parse(response.body)
             
             expect(response.status).to eq 200

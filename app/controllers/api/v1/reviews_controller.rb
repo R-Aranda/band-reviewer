@@ -5,10 +5,12 @@ class Api::V1::ReviewsController < ApiController
   def create
     review = Review.new(review_params)
     review.artist_id = artist.id
-    review.user_id = current_user
+    review.user = current_user
     if review.save
+      binding.pry
       render json: review
     else
+      binding.pry
       render json: { errors: review.errors.full_messages }, status: 400
     end
   end
