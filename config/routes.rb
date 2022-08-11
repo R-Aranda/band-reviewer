@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get '/artists', to: "homes#index"
   get '/artists/new', to: "homes#auth"
   get '/artists/:id', to: "homes#index"
+  get '/users/:id', to: "homes#index"
 
   namespace :api do
     namespace :v1 do
       resources :artists, only: [:index, :show, :create, :destroy]  do
         resources :reviews, only: [:create]
       end
+      resources :users, only: [:index, :show]
     end
   end
 end
