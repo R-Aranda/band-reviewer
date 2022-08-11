@@ -24,7 +24,7 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
   let!(:first_review) {
     Review.create(
-      rating: "4",
+      rating: "⭐️⭐️⭐️⭐️",
       title: "This band is cool",
       body: "Hey this band is like really cool",
       artist: Artist.first
@@ -109,6 +109,16 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
       expect(returned_json["artist"]["bio"]).to  eq first_artist.bio
       expect(returned_json["artist"]["reviews"][0]["title"]).to eq first_artist.reviews[0]["title"]
     end
+
+    it "should show artist's information fetched from third party api" do
+      get :show, params: {id: first_artist.id, reviews: first_artist.reviews}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(returned_json["artist"]["artist_data"]["name"]).to eq first_artist.name
+      expect(returned_json["artist"]["artist_data"]["city"]).to eq "New York"
+      expect(returned_json["artist"]["artist_data"]["year_started"]).to eq "1998"
+    end
   end
 
   describe "DELETE#destroy" do
@@ -142,7 +152,6 @@ RSpec.describe Api::V1::ArtistsController, type: :controller do
 
 
     it "should delete Artist" do
-
       user = User.create(email: "admintest@email.com", role: "admin")
       login_as(user)
 

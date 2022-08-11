@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 const ReviewTile = ({
   title,
@@ -7,20 +7,20 @@ const ReviewTile = ({
   date,
   reviewId,
   artistId,
-  userId
+  userId,
 }) => {
   const [votes, setVotes] = useState({
     upvotes: 0,
     downvotes: 0,
-  });
+  })
   const [oldVote, setOldVote] = useState({
     upvoted: false,
     downvoted: false,
-  });
+  })
   const submitHandler = async (event) => {
     const currentVote = event.currentTarget.innerText
 
-    // votes state should only be updated after the fetch 
+    // votes state should only be updated after the fetch
     let payload = {
       upvotes: 0,
       downvotes: 0,
@@ -33,7 +33,7 @@ const ReviewTile = ({
     if (currentVote === "Agree") {
       allUpvotes = votes.upvotes + 1
       setOldVote({ upvoted: true, downvoted: false })
-      payload.upvotes = 1;
+      payload.upvotes = 1
     } else if (currentVote === "Disagree") {
       allDownvotes = votes.downvotes + 1
       setOldVote({ upvoted: false, downvoted: true })
@@ -55,34 +55,36 @@ const ReviewTile = ({
           },
           body: JSON.stringify(payload),
         }
-      );
+      )
       if (!response.ok) {
-        const errorMessage = `${response.status} (${response.statusText})`;
-        throw new Error(errorMessage);
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
       }
-      setVotes(payload);
+      setVotes(payload)
     } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`);
+      console.error(`Error in Fetch: ${error.message}`)
     }
   }
 
   return (
-    <ul>
-      <h3>{title}</h3>
-      <h5>Rating: {rating}</h5>
-      <p>{body}</p>
-      <p>Posted at: {date}</p>
-      <button className="button" onClick={submitHandler}>
-        Agree
-      </button>
-      <button className="button" onClick={submitHandler}>
-        Disagree
-      </button>
-      <p>
-        {votes.upvotes} users agree and {votes.downvotes} users disagree
-      </p>
-    </ul>
+    <div className="review-text">
+      <ul>
+        <h3>{title}</h3>
+        <h5>Rating: {rating} </h5>
+        <p>{body}</p>
+        <p>Posted at: {date}</p>
+        <button className="button" onClick={submitHandler}>
+          Agree
+        </button>
+        <button className="button" onClick={submitHandler}>
+          Disagree
+        </button>
+        <p>
+          {votes.upvotes} users agree and {votes.downvotes} users disagree
+        </p>
+      </ul>
+    </div>
   )
 }
 
-export default ReviewTile;
+export default ReviewTile

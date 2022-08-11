@@ -90,6 +90,10 @@ GEM
     execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
+    faraday (2.4.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.1.0)
     ffi (1.15.5)
     foundation-rails (6.6.2.0)
       railties (>= 3.1.0)
@@ -122,11 +126,17 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.16.2)
     nio4r (2.5.8)
+    nokogiri (1.13.8)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.2)
@@ -192,6 +202,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.3)
+    ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -244,7 +255,9 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  ruby
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -253,6 +266,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot
+  faraday
   foundation-rails (~> 6.5)
   jbuilder (~> 2.5)
   jquery-rails

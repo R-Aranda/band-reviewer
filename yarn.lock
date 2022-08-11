@@ -10530,6 +10530,11 @@ react-router@5.0.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-slugify@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-slugify/-/react-slugify-2.1.0.tgz#01d93b80381dcd47fe6e074eb137a475579967a7"
+  integrity sha512-X+kYdGP1WumAX2exool+1lwjLSZ1dDCaCzwF0KvDWHjPfCD4hxtHvok4oyZEZro2lioaR+lCtyVG8ti2Yvpnsg==
+
 react-test-renderer@^16.0.0-0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.14.0.tgz#e98360087348e260c56d4fe2315e970480c228ae"

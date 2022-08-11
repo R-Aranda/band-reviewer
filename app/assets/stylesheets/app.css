@@ -1,15 +1,39 @@
-
-
-.artist-tiles {
-    padding: 10px;
+:root {
+    --purple: #9d79BC;
+    --red: #F03A47;
+    --green: #32A287;
+    --white: #D7D0c8;
+    --black: #2a2d34;
 }
 
-.artist-tile-text {
+.artist-tiles {
+    width: 250px;
+    text-align: center;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+    background-color: var(--white);
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 30px;
+    border-color: var(--purple);
+}
+
+.artist-tile-text a{
     margin-left: auto;
     margin-right: auto;
     font-size: 2vw;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #2A2D34;
+    transition: 0.3s ease;
+}
+
+.artist-tile-text :hover{
+    color: var(--purple);
+    text-shadow: 2px 2px var(--black);
 }
 
 .artist-index-container {
@@ -18,3 +42,120 @@
     justify-content: center;
 }
 
+.inner-nav-bar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner-nav-bar a{
+    transition: 0.3s ease-in-out;
+}
+
+.inner-nav-bar :hover {
+    color: var(--black);
+}
+
+.nav-bar-main {
+    background-color: var(--purple);
+}
+
+.grid-x {
+    margin: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.review-text {
+    color: var(--black);
+    background-color: rgba(175, 175, 175, 0.705);
+    margin: auto;
+    width: 500px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 45px;
+    border-color: var(--red);
+}
+
+.review-text-div {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.review-header {
+    color: var(--white);
+    text-align: center;
+}
+
+.submit-review-header {
+    color: var(--black);
+    text-align: center;
+    font-weight: bold;
+}
+
+.new-review-form {
+    margin-top: 20px;
+    background-color: #666666;
+    padding: 2%;
+    padding-top: 1%;
+}
+
+.new-review-form-label {
+    color: var(--black);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.new-review-form-text-box {
+    border-radius: 15px !important;
+}
+
+.review-button-div {
+    padding: 10px;
+}
+
+.review-button {
+    color: var(--white);
+    height: 50px;
+    width: 100px;
+    margin-left: 7px;
+    margin-right: 7px;
+    background-color: var(--black);
+    border: none;
+}
+
+.top-bar-section {
+    font-size: larger;
+    font-weight: bold;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+}
+
+.login_signup-header {
+    color: var(--white);
+}
+
+.login_signup-div {
+    padding-left: 300px;
+    padding-right: 300px;
+    margin-top: 30px;
+    padding-bottom:40px ;
+}
+
+.devise-links {
+    color: var(--white);
+}
+
+.error-explanation-text {
+    color: var(--red);
+}
