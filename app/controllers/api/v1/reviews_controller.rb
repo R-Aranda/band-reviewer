@@ -7,10 +7,8 @@ class Api::V1::ReviewsController < ApiController
     review.artist_id = artist.id
     review.user = current_user
     if review.save
-      binding.pry
       render json: review
     else
-      binding.pry
       render json: { errors: review.errors.full_messages }, status: 400
     end
   end
