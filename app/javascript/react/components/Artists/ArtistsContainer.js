@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import ArtistTile from "./ArtistTile";
-import { Link } from "react-router-dom";
 
 const ArtistsContainer = (props) => {
   const [artists, setArtists] = useState([]);
@@ -61,14 +60,9 @@ const ArtistsContainer = (props) => {
   });
 
   return (
-    <Fragment>
-      <div className="artist-index-container">
-        <div className="grid-x">{artistArray}</div>
-      </div>
-      <a href="button" className="artist-new-button">
-        Select a New Artist
-      </a>
-    </Fragment>
+    <div className="artist-index-container">
+      <div className="grid-x">{artistArray}</div>
+    </div>
   );
 };
 
