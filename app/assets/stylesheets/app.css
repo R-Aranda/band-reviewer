@@ -242,3 +242,8 @@
   cursor: pointer;
   color: red;
 }
+
+.admin-button {
+  display: inline-block !important;
+  margin-left: 20px !important;
+}
