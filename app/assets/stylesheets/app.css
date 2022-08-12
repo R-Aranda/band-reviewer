@@ -9,16 +9,21 @@
   }
 
 .artist-tile {
-    width: 20em;
-    height: 18em;
+    width: 100%;
+    /* width: 20em; */
+    height: auto;
+    max-width: 28em;
+    max-height: 24em;
+    /* height: 18em; */
     text-align: center;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: auto;
+    padding-bottom: auto;
     margin: auto;
     background-color: var(--darkblue);
-    border-radius: 25px;
+    border-radius: 1em;
 }
 
 .tile-hover :hover {
@@ -34,8 +39,12 @@
 
 
 .artist-tile-text a{
+    object-fit: contain;
+    white-space: nowrap;
+    overflow: hidden;
     transition: 0.3s ease;
-    font-size: 1.5vw;
+    /* font-size: 20px; */
+    font-size: 1vw;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--white);
@@ -189,7 +198,11 @@
 }
 
 .artist-photo {
+    /* max-width: 100%; */
     width: 260px;
+    height: auto;
     height: 200px;
-    border-radius: 1em;
+    object-fit: contain;
+    radius: 20px;
+    /* border-radius: 20px; */
 }
