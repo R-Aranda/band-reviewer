@@ -41,8 +41,6 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
     setUpvote(upvote + 1);
   };
 
-  // debugger;
-
   const decrement = () => {
     setDownColor("downvote-color");
     setUpColor("upvote");
