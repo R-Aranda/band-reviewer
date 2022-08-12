@@ -55,9 +55,11 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
         }
       );
       const newVoteData = await response.json();
+
+      // debugger;
       setCount(newVoteData.total_votes.total);
     } catch (error) {
-      console.error(`Error in Fetch: ${error.message}`);
+      alert("You must be signed in to vote!");
     }
   };
 
