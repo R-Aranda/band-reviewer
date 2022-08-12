@@ -1,7 +1,7 @@
 class Api::V1::VotesController < ApplicationController
   protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:index]
 
   def total_votes
     votes = Vote.where(review_id: params["review_id"])
