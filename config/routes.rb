@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/artists', to: "homes#index"
   get '/artists/new', to: "homes#auth"
   get '/artists/:id', to: "homes#index"
+  get '/users/:id', to: "homes#index"
 
   namespace :api do
     namespace :v1 do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
            resources :votes, only: [:create, :index]
         end
       end
+      resources :users, only: [:index, :show]
     end
   end
 end

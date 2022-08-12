@@ -12,5 +12,10 @@ RSpec.describe User, type: :model do
       user = FactoryBot.create(:user, role: "admin")
       expect(user.admin?).to eq(true)
     end
+
+    it "has a profile photo" do
+      user = FactoryBot.create(:user)
+      expect(user.profile_photo?).to eq(true)
+    end
   end
 end
