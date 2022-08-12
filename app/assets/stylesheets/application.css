@@ -151,15 +151,12 @@
 }
 
 .image-container {
-  margin: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
   max-width: 500px;
   max-height: 500px;
   border: solid 3px #ffffff;
   background-color: #8a8a8a;
-}
-
-.img {
-  height: 200px;
-  width: auto;
 }

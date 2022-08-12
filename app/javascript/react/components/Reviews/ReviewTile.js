@@ -31,7 +31,9 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
   }, []);
 
   const increment = (event) => {
-    setUpColor("upvote-color");
+    if (upColor === "upvote-color") {
+      setUpColor("upvote");
+    } else setUpColor("upvote-color");
     setDownColor("downvote");
     updateVotes({
       review_id: reviewId,
@@ -42,6 +44,9 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
   };
 
   const decrement = () => {
+    if (downColor === "downvote-color") {
+      setDownColor("downvote");
+    } else setDownColor("downvote-color");
     setDownColor("downvote-color");
     setUpColor("upvote");
     updateVotes({

@@ -9,16 +9,21 @@
 }
 
 .artist-tile {
-  width: 20em;
-  height: 18em;
+  width: 100%;
+  /* width: 20em; */
+  height: auto;
+  max-width: 28em;
+  max-height: 24em;
+  /* height: 18em; */
   text-align: center;
-  padding-left: 13px;
-  padding-right: 13px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: auto;
+  padding-bottom: auto;
   margin: auto;
   background-color: var(--darkblue);
-  border-radius: 25px;
+  border-radius: 1em;
 }
 
 .tile-hover :hover {
@@ -33,16 +38,19 @@
 }
 
 .artist-tile-text a {
+  object-fit: contain;
+  white-space: nowrap;
+  overflow: hidden;
   transition: 0.3s ease;
-  font-size: 1.5vw;
+  /* font-size: 20px; */
+  font-size: 1vw;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: var(--white);
 }
 
 .artist-tile-text :hover {
-  color: var(--purple);
-  text-shadow: 2px 2px var(--black);
+  color: var(--lightblue);
 }
 
 .artist-index-container {
@@ -77,6 +85,7 @@
   padding-right: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 80%;
 }
 
 .review-text {
@@ -116,16 +125,25 @@
   background-color: #666666;
   padding: 2%;
   padding-top: 1%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .new-review-form-label {
-  color: var(--black);
+  color: var(--white);
   font-size: larger;
   font-weight: bold;
 }
 
 .new-review-form-text-box {
   border-radius: 15px !important;
+}
+
+.new-review-form-text-box-rating {
+  border-radius: 15px !important;
+  margin-right: 10px;
+  width: 120px;
 }
 
 .review-button-div {
@@ -162,10 +180,11 @@
 }
 
 .login_signup-div {
+  padding-top: 50px;
   padding-left: 300px;
   padding-right: 300px;
-  margin-top: 30px;
-  padding-bottom: 40px;
+  height: 750px;
+  background-color: var(--darkblue);
 }
 
 .devise-links {
@@ -178,7 +197,7 @@
 
 .top-section-text {
   text-align: center;
-  margin-top: -40px;
+  /* margin-top: -40px; */
   margin-bottom: 20px;
   color: var(--white);
   font-size: larger;
@@ -189,9 +208,17 @@
 }
 
 .artist-photo {
+  /* max-width: 100%; */
   width: 260px;
+  height: auto;
   height: 200px;
-  border-radius: 1em;
+  object-fit: contain;
+  radius: 20px;
+  /* border-radius: 20px; */
+}
+
+.minimum-characters-text {
+  color: var(--white);
 }
 
 .upvote {
