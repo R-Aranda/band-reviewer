@@ -67,12 +67,12 @@ const ReviewForm = ({ addReview }) => {
             <ErrorList errors={errors} />
             <label className="new-review-form-label">
               Rating
-              <select className="new-review-form-text-box"
+            </label>
+              <select className="new-review-form-text-box-rating"
                 id="rating"
                 onChange={handleInputChange}
                 value={addNewReview.rating}
               >{starSelector}</select>
-            </label>
 
             <label className="new-review-form-label">
               Title
