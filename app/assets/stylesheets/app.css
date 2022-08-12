@@ -203,3 +203,15 @@
   font-size: 40px;
   cursor: pointer;
 }
+
+.upvote-color {
+  font-size: 40px;
+  cursor: pointer;
+  color: green;
+}
+
+.downvote-color {
+  font-size: 40px;
+  cursor: pointer;
+  color: red;
+}
