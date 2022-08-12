@@ -27,7 +27,7 @@ gem 'active_model_serializers'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-
+  gem "dotenv-rails"
 end
 
 group :development do
@@ -55,3 +55,7 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails', '~> 6.5'
 gem 'webpacker', '~> 3.3'
+gem 'faraday'
+
+gem "carrierwave"
+gem "fog-aws"

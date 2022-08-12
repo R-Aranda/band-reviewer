@@ -18,6 +18,7 @@ feature 'user registers', %Q{
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    attach_file("user_profile_photo", Rails.root + "spec/fixtures/images/test-image.png")
 
     click_button 'Sign up'
 
@@ -32,4 +33,5 @@ feature 'user registers', %Q{
     expect(page).to have_content("can't be blank")
     expect(page).to_not have_content('Sign Out')
   end
+
 end

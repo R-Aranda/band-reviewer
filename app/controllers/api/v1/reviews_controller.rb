@@ -5,6 +5,7 @@ class Api::V1::ReviewsController < ApiController
   def create
     review = Review.new(review_params)
     review.artist_id = artist.id
+    review.user = current_user
     if review.save
       render json: review
     else
@@ -15,11 +16,15 @@ class Api::V1::ReviewsController < ApiController
   private
 
   def review_params 
-    params.require(:review).permit(:rating, :title, :body)
+    params.require(:review).permit(:rating, :title, :body, :artist_id, :votes)
   end
 
   def artist
     @artist = Artist.find(params[:artist_id])
+  end
+
+  def user
+    @user = User.find(params[:user_id])
   end
 
   def authorize_user

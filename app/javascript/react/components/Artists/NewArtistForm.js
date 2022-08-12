@@ -3,20 +3,20 @@ import ErrorList from "./ErrorList";
 import { Redirect } from "react-router-dom";
 
 const NewArtistForm = () => {
-  const [artistObject, setArtistObject] = useState({})
+  const [artistObject, setArtistObject] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
   const [newArtist, setNewArtist] = useState({
     name: "",
     bio: "",
-    photo: ""
+    photo: "",
   });
   const clearForm = (event) => {
     event.preventDefault();
     setNewArtist({
       name: "",
       bio: "",
-      photo: ""
+      photo: "",
     });
     setErrors({});
   };
@@ -28,11 +28,11 @@ const NewArtistForm = () => {
         credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(newArtist),
       });
-      const artistData = await response.json()
+      const artistData = await response.json();
       setArtistObject(artistData);
       setShouldRedirect(true);
     } catch (err) {

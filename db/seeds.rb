@@ -19,8 +19,8 @@ Artist.create(name: "Elton John", bio: "Sir Elton Hercules John CH CBE is a Brit
 Artist.create(name: "Rihanna", bio: "Robyn Rihanna Fenty NH is a Barbadian singer, actress, and businesswoman.", photo: "https://pyxis.nymag.com/v1/imgs/5c3/d2d/0d809014d06afaffff48e2a0f78febb5fb-rihanna.rsquare.w330.jpg", genre: "Pop R&B", website:"http://rihanna.com/")
 Artist.create(name: "Foo Fighters", bio: "Foo Fighters are an American rock band formed in Seattle in 1994.", photo: "https://media.pitchfork.com/photos/60d617bd46c357c48e83fe56/16:9/w_1280,c_limit/Foo-Fighters.jpeg", genre: "Grunge Rock", website:"http://foofighters.com/")
 
-Review.create(rating: "⭐️⭐️⭐️⭐️⭐️", title: 'This band is cool', body: "I'm this band's number one fan!", artist: Artist.first)
-Review.create(rating: "⭐️", title: 'I like their music', body: "These guys are like really good", artist: Artist.fourth)
-Review.create(rating: "⭐️", title: 'Worst band ever', body: "This band is horrible and should be ashamed of themselves", artist: Artist.last)
-Review.create(rating: "⭐️⭐️", title: 'I listen to this artist sometimes', body: "I'm this band's number one fan!", artist: Artist.first)
-Review.create(rating: "⭐️⭐️⭐️⭐️⭐️", title: 'I like', body: "Very cool", artist: Artist.second)
+Review.create(rating: "⭐️⭐️⭐️⭐️⭐️", title: 'This band is cool', body: "I'm this band's number one fan!", artist: Artist.first, user: User.first)
+Review.create(rating: "⭐️", title: 'I like their music', body: "These guys are like really good", artist: Artist.fourth, user: User.second)
+Review.create(rating: "⭐️", title: 'Worst band ever', body: "This band is horrible and should be ashamed of themselves", artist: Artist.last, user: User.first)
+Review.create(rating: "⭐️⭐️", title: 'I listen to this artist sometimes', body: "I'm this band's number one fan!", artist: Artist.first, user: User.third)
+Review.create(rating: "⭐️⭐️⭐️⭐️⭐️", title: 'I like', body: "Very cool", artist: Artist.second, user: User.fourth)
