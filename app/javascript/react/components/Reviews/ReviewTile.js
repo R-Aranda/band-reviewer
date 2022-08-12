@@ -81,7 +81,7 @@ const ReviewTile = ({ title, rating, body, date, reviewId, artistId }) => {
       <ul>
         <h3>{title}</h3>
         <h5>Rating: {rating} </h5>
-        <p>{body}</p>
+        <p className="review-body">{body}</p>
         <p>Posted at: {date}</p>
         <i onClick={increment} className={upColor}>
           ▲

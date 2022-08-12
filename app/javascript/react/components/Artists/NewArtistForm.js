@@ -10,13 +10,17 @@ const NewArtistForm = () => {
     name: "",
     bio: "",
     photo: "",
+    website: "",
+    genre: "",
   });
   const clearForm = (event) => {
     event.preventDefault();
-    setNewArtist({
+    setArtistObject({
       name: "",
       bio: "",
       photo: "",
+      website: "",
+      genre: "",
     });
     setErrors({});
   };
@@ -30,7 +34,7 @@ const NewArtistForm = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(newArtist),
+        body: JSON.stringify(artistObject),
       });
       const artistData = await response.json();
       setArtistObject(artistData);
@@ -45,8 +49,8 @@ const NewArtistForm = () => {
   }
 
   const handleInputChange = (event) => {
-    setNewArtist({
-      ...newArtist,
+    setArtistObject({
+      ...artistObject,
       [event.currentTarget.id]: event.currentTarget.value,
     });
   };
@@ -55,7 +59,7 @@ const NewArtistForm = () => {
     let submitErrors = {};
     const requiredFields = ["name", "bio", "photo"];
     requiredFields.forEach((field) => {
-      if (newArtist[field].trim() === "") {
+      if (artistObject[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
@@ -85,7 +89,7 @@ const NewArtistForm = () => {
             type="text"
             id="name"
             onChange={handleInputChange}
-            value={newArtist.name}
+            value={artistObject.name}
           />
         </label>
 
@@ -96,7 +100,7 @@ const NewArtistForm = () => {
             type="text"
             id="bio"
             onChange={handleInputChange}
-            value={newArtist.bio}
+            value={artistObject.bio}
           />
         </label>
 
@@ -107,10 +111,10 @@ const NewArtistForm = () => {
             type="text"
             id="photo"
             onChange={handleInputChange}
-            value={newArtist.photo}
+            value={artistObject.photo}
           />
         </label>
-        
+
         <label className="new-review-form-label">
           Website:
           <input
@@ -118,7 +122,17 @@ const NewArtistForm = () => {
             type="text"
             id="website"
             onChange={handleInputChange}
-            value={newArtist.website}
+            value={artistObject.website}
+          />
+        </label>
+        <label className="new-review-form-label">
+          Genre:
+          <input
+            className="new-review-form-text-box"
+            type="text"
+            id="genre"
+            onChange={handleInputChange}
+            value={artistObject.genre}
           />
         </label>
 
