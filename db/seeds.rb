@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create!(email: "user1@email.com", password: "111111", username: "testuser2")
+User.create(email: "user2@email.com", password: "111111", username: "another")
+User.create(email: "user3@email.com", password: "111111", username: "Aidan")
+User.create(email: "user4@email.com", password: "111111", username: "420")
+
 Artist.create(name: "Daft Punk", bio: "Two French men making crazy electronic music", photo: "https://static01.nyt.com/images/2021/02/23/arts/22daftpunk/merlin_68436082_cbc2d16f-e4ce-4e8e-9f06-d2789c9f309b-mobileMasterAt3x.jpg", genre: "Electronic", website: "https://www.daftpunk.com/")
 Artist.create(name: "Kendrick Lamar", bio: "Compton's second coming of Christ", photo: "https://www.nme.com/wp-content/uploads/2022/06/kendrick-lamar-glasto-2022.jpg", genre: "Hip-Hop", website: "https://oklama.com/")
 Artist.create(name: "Pearl Jam", bio: "Eddie Vedder the GOAT! Nirvana who? This is the only Seattle band that matters", photo: "https://www.rollingstone.com/wp-content/uploads/2020/03/PearlJam.jpg", genre: "Grunge", website: "https://pearljam.com/")

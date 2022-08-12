@@ -193,3 +193,13 @@
   height: 200px;
   border-radius: 1em;
 }
+
+.upvote {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.downvote {
+  font-size: 40px;
+  cursor: pointer;
+}
