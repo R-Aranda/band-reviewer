@@ -8,19 +8,18 @@ const ArtistTile = (props) => {
   }
 
   return (
-    <div className="grid-x">
-      <div className="small-3">
-        <div className="artist-tiles">
-          <div className="artist-tile-text">
-            <Link to={`/artists/${props.id}`}>{props.name}</Link>
-            {props.adminRole && (
-              <div className="button" onClick={handleClick}>
-                Delete button
-              </div>
-            )}
-          </div>
+    <div className="grid-x small-3">
+        <div className="artist-tile">
+          <img className="artist-photo" src={`${props.photo}`} />
+            <div className="artist-tile-text">
+              <Link to={`/artists/${props.id}`}>{props.name}</Link>
+              {props.adminRole && (
+                <div className="button" onClick={handleClick}>
+                  Delete button
+                </div>
+              )}
+            </div>
         </div>
-      </div>
     </div>
   )
 }

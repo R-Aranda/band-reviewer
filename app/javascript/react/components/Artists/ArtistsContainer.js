@@ -51,6 +51,7 @@ const ArtistsContainer = (props) => {
         key={artist.id}
         name={artist.name}
         bio={artist.bio}
+        photo={artist.photo}
         id={artist.id}
         adminRole={adminRole}
         deleteArtist={deleteArtist}

@@ -55,6 +55,7 @@ const ArtistShowPage = (props) => {
         key={artist.id}
         name={artist.name}
         bio={artist.bio}
+        photo={artist.photo}
         genre={artist.genre}
         website={artist.website}
         data={artist.artist_data}

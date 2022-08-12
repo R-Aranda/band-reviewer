@@ -1,6 +1,5 @@
 class ArtistSerializer < ActiveModel::Serializer
-  attributes :id, :name, :bio, :genre, :website, :artist_data
-
+  attributes :id, :name, :bio, :genre, :website, :photo, :artist_data
   has_many :reviews
   
   def artist_data
