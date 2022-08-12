@@ -15,16 +15,15 @@
  *= require foundation_and_overrides
 
  */
- :root {
-  --purple: #9d79BC;
-  --red: #F03A47;
-  --green: #32A287;
-  --white: #ECF0F3;
-  --lightblue: #5DA399;
-  --darkblue: #353D46;
-  --background: #DAD2D8;
+:root {
+  --purple: #9d79bc;
+  --red: #f03a47;
+  --green: #32a287;
+  --white: #ecf0f3;
+  --lightblue: #5da399;
+  --darkblue: #353d46;
+  --background: #dad2d8;
 }
-
 
 .card {
   width: 300px;
@@ -159,4 +158,8 @@
   max-height: 500px;
   border: solid 3px #ffffff;
   background-color: #8a8a8a;
+}
+
+.submit-artist-link {
+  padding-top: 20px;
 }
