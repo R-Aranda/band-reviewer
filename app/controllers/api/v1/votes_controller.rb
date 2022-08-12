@@ -8,7 +8,9 @@ class Api::V1::VotesController < ApplicationController
     upvotes = votes.sum(:upvote)
     downvotes = votes.sum(:downvote)
     total = upvotes + downvotes * -1
-    {total: total, upvotes: upvotes, downvotes: downvotes}
+    user_vote = Vote.find_by(user: current_user, review_id: params["review_id"])
+    {total: total, upvotes: upvotes, downvotes: downvotes, user_vote: user_vote}
+    
   end
 
   def create
