@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from "react"
-import ErrorList from "../Artists/ErrorList"
+import React, { useState, Fragment } from "react";
+import ErrorList from "../Artists/ErrorList";
 let stars = (stars = [
   "",
   "⭐️",
@@ -7,74 +7,81 @@ let stars = (stars = [
   "⭐️⭐️⭐️",
   "⭐️⭐️⭐️⭐️",
   "⭐️⭐️⭐️⭐️⭐️",
-])
+]);
 const ReviewForm = ({ addReview }) => {
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
   const [addNewReview, setAddNewReview] = useState({
     rating: "",
     title: "",
     body: "",
-  })
+  });
 
   const handleInputChange = (e) => {
     setAddNewReview({
       ...addNewReview,
       [e.currentTarget.id]: e.currentTarget.value,
-    })
-  }
+    });
+  };
 
   const validForSubmission = () => {
-    let submitErrors = {}
-    const requiredFields = ["rating", "title", "body"]
+    let submitErrors = {};
+    const requiredFields = ["rating", "title", "body"];
     requiredFields.forEach((field) => {
       if (addNewReview[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
-        }
+        };
       }
-    })
+    });
 
-    setErrors(submitErrors)
-    return _.isEmpty(submitErrors)
-  }
+    setErrors(submitErrors);
+    return _.isEmpty(submitErrors);
+  };
 
   const clearForm = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setAddNewReview({
       rating: "",
       title: "",
       body: "",
-    })
-    setErrors({})
-  }
+    });
+    setErrors({});
+  };
 
   const onSubmitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (validForSubmission()) {
-      addReview({ review: addNewReview })
+      addReview({ review: addNewReview });
       setAddNewReview({
         rating: "",
         title: "",
         body: "",
-      })
+      });
     }
-  }
+  };
+  const starSelector = stars.map((star) => {
+    return (
+      <option key={star} value={star}>
+        {star}
+      </option>
+    );
+  });
 
   return (
     <Fragment>
-      <h2>Submit A Review:</h2>
-      <ErrorList errors={errors} />
-      <form className="callout" onSubmit={onSubmitHandler}>
-        <label>
-          Rating:
-          <input
-            type="text"
-            id="rating"
-            onChange={handleInputChange}
-            value={addNewReview.rating}
-          />
-        </label>
+      <form className="new-review-form" onSubmit={onSubmitHandler}>
+        <h2 className="submit-review-header">Submit A Review</h2>
+        <ErrorList errors={errors} />
+        <label className="new-review-form-label">Rating</label>
+        <select
+          className="new-review-form-text-box-rating"
+          id="rating"
+          onChange={handleInputChange}
+          value={addNewReview.rating}
+        >
+          {starSelector}
+        </select>
 
         <label className="new-review-form-label">
           Title
@@ -106,7 +113,7 @@ const ReviewForm = ({ addReview }) => {
         </div>
       </form>
     </Fragment>
-  )
-}
+  );
+};
 
-export default ReviewForm
+export default ReviewForm;

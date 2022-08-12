@@ -10,9 +10,11 @@
 
 .artist-tile {
   width: 100%;
+  /* width: 20em; */
   height: auto;
   max-width: 28em;
   max-height: 24em;
+  /* height: 18em; */
   text-align: center;
   padding: 1em;
   padding-left: 1em;
@@ -181,7 +183,7 @@
   padding-top: 50px;
   padding-left: 300px;
   padding-right: 300px;
-  height: 700px;
+  height: 750px;
   background-color: var(--darkblue);
 }
 
@@ -195,7 +197,7 @@
 
 .top-section-text {
   text-align: center;
-  margin-top: -40px;
+  /* margin-top: -40px; */
   margin-bottom: 20px;
   color: var(--white);
   font-size: larger;
@@ -206,11 +208,17 @@
 }
 
 .artist-photo {
+  /* max-width: 100%; */
   width: 260px;
   height: auto;
   height: 200px;
   object-fit: contain;
   radius: 20px;
+  /* border-radius: 20px; */
+}
+
+.minimum-characters-text {
+  color: var(--white);
 }
 
 .upvote {
@@ -233,8 +241,4 @@
   font-size: 40px;
   cursor: pointer;
   color: red;
-}
-
-.minimum-characters-text {
-  color: var(--white);
 }
