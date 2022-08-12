@@ -58,6 +58,7 @@ const ArtistShowPage = (props) => {
         photo={artist.photo}
         genre={artist.genre}
         website={artist.website}
+        data={artist.artist_data}
       />
       <ReviewContainer reviews={reviews} addReview={addReview} />
     </div>
