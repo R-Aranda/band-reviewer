@@ -86,6 +86,7 @@
     padding-right: 14px;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 80%;
 }
 
 .review-text {
@@ -125,10 +126,13 @@
     background-color: #666666;
     padding: 2%;
     padding-top: 1%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .new-review-form-label {
-    color: var(--black);
+    color: var(--white);
     font-size: larger;
     font-weight: bold;
 }
@@ -180,7 +184,7 @@
     padding-top: 50px;
     padding-left: 300px;
     padding-right: 300px;
-    height: 700px;
+    height: 750px;
     background-color: var(--darkblue);
 }
 
@@ -194,7 +198,7 @@
 
 .top-section-text {
     text-align: center;
-    margin-top: -40px;
+    /* margin-top: -40px; */
     margin-bottom: 20px;
     color: var(--white);
     font-size: larger;
@@ -212,4 +216,8 @@
     object-fit: contain;
     radius: 20px;
     /* border-radius: 20px; */
+}
+
+.minimum-characters-text {
+    color: var(--white);
 }

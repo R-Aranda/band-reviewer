@@ -41,7 +41,7 @@ const NewArtistForm = () => {
   };
 
   if (shouldRedirect) {
-    return <Redirect push to={`/artists/${artistObject.id}`} />;
+    return <Redirect push to={`/artists/${artistObject.artist.id}`} />;
   }
 
   const handleInputChange = (event) => {
@@ -53,7 +53,7 @@ const NewArtistForm = () => {
 
   const validForSubmission = () => {
     let submitErrors = {};
-    const requiredFields = ["name", "bio"];
+    const requiredFields = ["name", "bio", "photo"];
     requiredFields.forEach((field) => {
       if (newArtist[field].trim() === "") {
         submitErrors = {
@@ -75,44 +75,61 @@ const NewArtistForm = () => {
   };
 
   return (
-    <form className="callout" onSubmit={onSubmitHandler}>
-      <ErrorList errors={errors} />
-      <label>
-        Name:
-        <input
-          type="text"
-          id="name"
-          onChange={handleInputChange}
-          value={newArtist.name}
-        />
-      </label>
+    <div className="login_signup-div">
+      <form className="new-review-form" onSubmit={onSubmitHandler}>
+        <ErrorList errors={errors} />
+        <label className="new-review-form-label">
+          Name:
+          <input
+            className="new-review-form-text-box"
+            type="text"
+            id="name"
+            onChange={handleInputChange}
+            value={newArtist.name}
+          />
+        </label>
 
-      <label>
-        Bio:
-        <input
-          type="text"
-          id="bio"
-          onChange={handleInputChange}
-          value={newArtist.bio}
-        />
-      </label>
+        <label className="new-review-form-label">
+          Bio:
+          <input
+            className="new-review-form-text-box"
+            type="text"
+            id="bio"
+            onChange={handleInputChange}
+            value={newArtist.bio}
+          />
+        </label>
 
-      <label>
-        Photo:
-        <input
-          type="text"
-          id="bio"
-          onChange={handleInputChange}
-          value={newArtist.photo}
-        />
-      </label>
-      <div className="button-group">
-        <button className="button" onClick={clearForm}>
-          Clear
-        </button>
-        <input className="button" type="submit" value="Submit" />
-      </div>
-    </form>
+        <label className="new-review-form-label">
+          Photo:
+          <input
+            className="new-review-form-text-box"
+            type="text"
+            id="photo"
+            onChange={handleInputChange}
+            value={newArtist.photo}
+          />
+        </label>
+        
+        <label className="new-review-form-label">
+          Website:
+          <input
+            className="new-review-form-text-box"
+            type="text"
+            id="website"
+            onChange={handleInputChange}
+            value={newArtist.website}
+          />
+        </label>
+
+        <div className="review-button-div">
+          <button className="review-button" onClick={clearForm}>
+            Clear
+          </button>
+          <input className="review-button" type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
   );
 };
 
